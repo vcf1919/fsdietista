@@ -22,7 +22,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Schibsted+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@900&family=Schibsted+Grotesk:wght@400;700&display=swap" rel="stylesheet">
 
 <script type="application/ld+json">
 {
@@ -66,500 +66,28 @@
 }
 </script>
 
-<style>
-/* ============================================================
-   FS · Dirección "Subtítulo de reel"
-   Paleta (basada en el logo):
-   --ink      #11141F  fondo oscuro principal (posts oscuros)
-   --navy     #2A3147  marino del logo: superficies, bordes oscuros
-   --mustard  #EDB03C  acento principal / CTA (texto SIEMPRE oscuro encima)
-   --cream    #F3EFE6  fondo claro (la consulta luminosa)
-   --paper    #FFFFFF  tarjetas
-   --rasp     #E2265E  frambuesa: solo detalles mínimos
-   Contraste AA (calculado):
-   ink sobre mustard  ≈ 9.5:1 ✔   |  mustard sobre ink-2 ≈ 8.8:1 ✔
-   cream sobre ink    ≈ 16.0:1 ✔  |  ink sobre cream     ≈ 16.0:1 ✔
-   --mute-d sobre ink ≈ 8.8:1 ✔   |  --mute-l sobre cream ≈ 7.1:1 ✔
-   Blanco sobre mustard ≈ 1.9:1 ✘ → NO se usa.
-   ============================================================ */
-:root{
-  --ink:#11141F;
-  --ink-2:#181C2B;
-  --navy:#2A3147;
-  --mustard:#EDB03C;
-  --mustard-soft:#F6DDA6;
-  --cream:#F3EFE6;
-  --cream-2:#EAE4D7;
-  --paper:#FFFFFF;
-  --rasp:#E2265E;
-  --mute-d:#AEB3C2;
-  --mute-l:#4A4F5E;
-  --line-d:rgba(243,239,230,.14);
-  --line-l:rgba(17,20,31,.12);
-
-  --f-display:"Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-  --f-text:"Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
-
-  --ease:cubic-bezier(0.22,1,0.36,1);
-  --r-sm:6px;
-  --r-md:10px;
-  --r-lg:16px;
-  --pad:clamp(20px,5vw,56px);
-  --max:1180px;
-  --nav-h:64px;
-}
-
-*,*::before,*::after{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:var(--f-text);font-size:17px;line-height:1.6;color:var(--ink);background:var(--cream);overflow-x:clip;-webkit-font-smoothing:antialiased}
-img{max-width:100%;display:block}
-a{color:inherit}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--mustard);outline-offset:3px;border-radius:4px}
-.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.skip{position:absolute;left:12px;top:-60px;z-index:200;background:var(--mustard);color:var(--ink);padding:10px 14px;border-radius:var(--r-sm);font-weight:700;text-decoration:none;transition:top .3s var(--ease)}
-.skip:focus{top:12px}
-
-.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
-section{position:relative}
-.dark{background:var(--ink);color:var(--cream)}
-.light{background:var(--cream);color:var(--ink)}
-
-/* ---------- Tipografía ---------- */
-.display{font-family:var(--f-display);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.005em;margin:0}
-h1.display{font-size:clamp(3.4rem,12vw,7.2rem)}
-h2.display{font-size:clamp(2.6rem,8.4vw,5.4rem)}
-h3{font-size:1.15rem;line-height:1.3;margin:0}
-.kicker{font-family:var(--f-text);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;display:inline-flex;align-items:center;gap:.6em;margin:0 0 18px}
-.kicker::before{content:"";width:10px;height:10px;background:var(--mustard);display:inline-block}
-.light .kicker{color:var(--mute-l)}
-.dark .kicker{color:var(--mute-d)}
-.lead{font-size:clamp(1.05rem,2.4vw,1.25rem);line-height:1.55;max-width:38ch}
-.dark .lead{color:#D9DCE4}
-.light .lead{color:var(--mute-l)}
-
-/* Palabra clave tipo subtítulo de reel: marcador mostaza que se pinta */
-.hl{position:relative;display:inline-block;z-index:0;padding:0 .08em;margin:0 -.04em;color:var(--ink)}
-.hl::before{content:"";position:absolute;inset:.04em -.02em .02em;background:var(--mustard);z-index:-1;transform:scaleX(0);transform-origin:left center;transition:transform .7s var(--ease)}
-.hl.on::before{transform:scaleX(1)}
-.dark .hl{color:var(--cream);transition:color .2s .25s}
-.dark .hl.on{color:var(--ink)}
-.mustard{color:var(--mustard)}
-
-/* ---------- Botones ---------- */
-.btn{--bg:var(--mustard);--fg:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:.55em;min-height:52px;padding:0 26px;border:0;border-radius:var(--r-sm);background:var(--bg);color:var(--fg);font-weight:700;font-size:1rem;letter-spacing:.01em;text-decoration:none;cursor:pointer;position:relative;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s var(--ease),background-color .25s}
-.btn::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s var(--ease)}
-.btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -10px rgba(237,176,60,.7)}
-.btn:hover::after{transform:translateX(120%)}
-.btn:active{transform:translateY(0) scale(.98);box-shadow:none}
-.btn .arr{display:inline-block;transition:transform .35s var(--ease)}
-.btn:hover .arr{transform:translateX(4px)}
-.btn-ghost{--bg:transparent;--fg:currentColor;box-shadow:inset 0 0 0 1.5px currentColor}
-.btn-ghost:hover{box-shadow:inset 0 0 0 1.5px var(--mustard);color:var(--mustard)}
-.light .btn-ghost:hover{color:var(--ink);background:var(--mustard);box-shadow:inset 0 0 0 1.5px var(--mustard)}
-.btn-ink{--bg:var(--ink);--fg:var(--cream)}
-.btn-ink:hover{box-shadow:0 10px 24px -12px rgba(17,20,31,.7)}
-.link-quiet{font-size:.92rem;color:inherit;opacity:.8;text-underline-offset:4px;display:inline-flex;align-items:center;min-height:44px}
-.link-quiet:hover{opacity:1;color:var(--mustard)}
-.light .link-quiet:hover{color:var(--ink)}
-
-/* ---------- Nav ---------- */
-.nav{position:sticky;top:0;z-index:50;height:var(--nav-h);background:var(--ink);color:var(--cream);border-bottom:1px solid transparent;transition:border-color .3s,box-shadow .3s}
-.nav.scrolled{border-color:var(--line-d);box-shadow:0 8px 24px -16px rgba(0,0,0,.6)}
-.nav .wrap{height:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
-.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-height:44px}
-.brand-logo{height:40px;width:auto;background:var(--cream);border-radius:var(--r-sm);padding:3px 6px}
-.brand-text{font-family:var(--f-display);font-weight:900;font-size:1.5rem;letter-spacing:.04em;line-height:1}
-.brand-text b{color:var(--mustard);font-weight:900}
-.brand-sub{display:none;font-size:.78rem;color:var(--mute-d);line-height:1.2;border-left:1px solid var(--line-d);padding-left:12px}
-.nav-links{display:none;gap:26px;list-style:none;margin:0;padding:0}
-.nav-links a{text-decoration:none;font-size:.92rem;font-weight:500;color:var(--mute-d);position:relative;padding:12px 0;transition:color .25s}
-.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:var(--mustard);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
-.nav-links a:hover{color:var(--cream)}
-.nav-links a:hover::after{transform:scaleX(1)}
-.nav .btn{min-height:44px;padding:0 20px}
-@media (min-width:900px){.nav-links{display:flex}.brand-sub{display:block}}
-
-/* ---------- Hero ---------- */
-.hero{padding:clamp(28px,6vw,72px) 0 clamp(56px,9vw,110px);overflow:hidden}
-.hero-grid{display:grid;gap:32px;align-items:end}
-.hero-tag{display:inline-flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:var(--cream);border:1px solid var(--line-d);padding:8px 14px;border-radius:var(--r-sm);margin-bottom:22px}
-.dot-live{width:8px;height:8px;border-radius:50%;background:var(--mustard);box-shadow:0 0 0 0 rgba(237,176,60,.6);animation:pulse 2.4s var(--ease) infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(237,176,60,.55)}70%{box-shadow:0 0 0 10px rgba(237,176,60,0)}100%{box-shadow:0 0 0 0 rgba(237,176,60,0)}}
-.hero h1 .line{display:block}
-.hero .lead{margin:22px 0 30px}
-.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-.trust{display:flex;flex-wrap:wrap;gap:12px 28px;margin-top:34px;padding-top:24px;border-top:1px solid var(--line-d)}
-.trust-item{display:flex;align-items:center;gap:10px;font-size:.92rem;color:var(--mute-d)}
-.trust-item strong{font-family:var(--f-display);font-size:2rem;font-weight:800;color:var(--cream);line-height:1}
-.stars{color:var(--mustard);letter-spacing:2px;font-size:.95rem}
-.hero-media{position:relative}
-.photo{position:relative;background:var(--navy);border-radius:var(--r-md);overflow:hidden;aspect-ratio:4/5}
-.photo img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05)}
-.ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--mute-d);font-size:.85rem;font-weight:600;letter-spacing:.02em;
-  background:
-    repeating-linear-gradient(135deg,rgba(243,239,230,.035) 0 12px,transparent 12px 24px),
-    linear-gradient(180deg,#2A3147,#1B2033)}
-.light .ph{color:var(--mute-l);background:repeating-linear-gradient(135deg,rgba(17,20,31,.04) 0 12px,transparent 12px 24px),linear-gradient(180deg,#E6DFD0,#D9D1C0)}
-.ph span{max-width:24ch;border:1px dashed currentColor;padding:12px 14px;border-radius:var(--r-sm)}
-.sub-caption{position:absolute;left:50%;bottom:9%;transform:translateX(-50%);width:max-content;max-width:90%;text-align:center;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(1.6rem,5.6vw,2.4rem);line-height:1.05;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.45)}
-.sub-caption .w{display:inline-block;opacity:0;transform:translateY(10px);transition:opacity .4s var(--ease),transform .4s var(--ease)}
-.sub-caption .w.on{opacity:1;transform:none}
-.sub-caption .w.key{color:var(--mustard)}
-.badge-online{position:absolute;top:14px;left:14px;background:var(--ink);color:var(--cream);font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:8px 12px;border-radius:var(--r-sm);display:flex;align-items:center;gap:8px}
-.badge-online i{width:6px;height:6px;background:var(--rasp);border-radius:50%}
-@media (min-width:900px){
-  .hero-grid{grid-template-columns:1.2fr .9fr;gap:56px;align-items:center}
-  .hero-media{margin-bottom:6px}
-}
-
-/* ---------- Ticker ---------- */
-.ticker{background:var(--mustard);color:var(--ink);overflow:hidden;border-block:1px solid rgba(17,20,31,.15)}
-.ticker-track{display:flex;width:max-content;animation:tick 38s linear infinite}
-.ticker ul{display:flex;list-style:none;margin:0;padding:14px 0;gap:0}
-.ticker li{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.35rem;letter-spacing:.02em;white-space:nowrap;padding:0 22px;display:flex;align-items:center;gap:44px}
-.ticker li::after{content:"";width:8px;height:8px;background:var(--ink);transform:rotate(45deg);margin-left:22px}
-@keyframes tick{to{transform:translateX(-50%)}}
-
-/* ---------- Secciones genéricas ---------- */
-.sec{padding:clamp(72px,11vw,140px) 0}
-.sec-head{display:grid;gap:18px;margin-bottom:clamp(36px,6vw,64px)}
-@media (min-width:900px){.sec-head.split{grid-template-columns:1.2fr 1fr;align-items:end;gap:56px}}
-
-/* ---------- Para quién ---------- */
-.niche{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.4rem,8vw,5.2rem);line-height:.95;margin:0 0 clamp(36px,6vw,60px);max-width:14ch}
-.niche .soft{color:rgba(17,20,31,.35)}
-.situations{display:grid;gap:14px;grid-template-columns:1fr}
-@media (min-width:640px){.situations{grid-template-columns:1fr 1fr}}
-@media (min-width:1000px){.situations{grid-template-columns:repeat(4,1fr)}}
-.sit{background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);padding:24px 22px 26px;display:flex;flex-direction:column;gap:12px;transition:transform .45s var(--ease),box-shadow .45s var(--ease),border-color .3s}
-.sit:hover{transform:translateY(-4px);box-shadow:0 18px 40px -24px rgba(17,20,31,.35);border-color:rgba(17,20,31,.25)}
-.sit q{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.65rem;line-height:1;quotes:"«" "»"}
-.sit q::before,.sit q::after{color:var(--mustard)}
-.sit p{margin:0;color:var(--mute-l);font-size:.98rem}
-.sit .tag{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--ink);margin-top:auto;display:flex;align-items:center;gap:8px}
-.sit .tag::before{content:"";width:18px;height:2px;background:var(--mustard)}
-
-/* ---------- Mitos ---------- */
-.myths{display:grid;gap:16px}
-@media (min-width:700px){.myths{grid-template-columns:1fr 1fr}}
-@media (min-width:1060px){.myths{grid-template-columns:repeat(3,1fr)}}
-.myth{border:1px solid var(--line-d);border-radius:var(--r-md);padding:26px 24px 28px;background:var(--ink-2);display:flex;flex-direction:column;gap:18px;min-height:250px;transition:border-color .3s,transform .45s var(--ease)}
-.myth:hover{border-color:rgba(237,176,60,.5);transform:translateY(-3px)}
-.myth .lbl{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d)}
-.myth .says{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.6rem;line-height:1.02;position:relative;display:inline;color:#C9CCD6;
-  background-image:linear-gradient(var(--rasp),var(--rasp));background-repeat:no-repeat;background-position:0 55%;background-size:0% 3px;transition:background-size .8s var(--ease) .15s}
-.myth.on .says{background-size:100% 3px}
-.myth .real{margin-top:auto;border-top:1px solid var(--line-d);padding-top:16px}
-.myth .real .lbl{color:var(--mustard)}
-.myth .real p{margin:8px 0 0;font-size:1rem;color:#E4E6EC}
-.myth .real p b{color:var(--cream)}
-.disclaimer{margin-top:28px;font-size:.82rem;color:var(--mute-d);max-width:70ch}
-
-/* ---------- Método ---------- */
-.method{display:grid;gap:22px}
-@media (min-width:960px){.method{grid-template-columns:repeat(3,1fr);gap:20px}}
-.step{position:relative;background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);padding:28px 24px 30px;overflow:hidden}
-.step .phase{font-family:var(--f-display);font-weight:900;font-size:4.6rem;line-height:.8;color:var(--cream-2);position:absolute;right:16px;top:14px;user-select:none}
-.step .k{font-size:.75rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-l);margin-bottom:10px;display:block}
-.step h3{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:2rem;line-height:1;margin-bottom:12px;position:relative}
-.step p{margin:0;color:var(--mute-l);position:relative}
-.step ul{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:8px;position:relative}
-.step li{font-size:.8rem;font-weight:600;background:var(--cream);border:1px solid var(--line-l);padding:5px 10px;border-radius:var(--r-sm)}
-.step.key{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-.step.key .phase{color:var(--navy)}
-.step.key .k{color:var(--mustard)}
-.step.key p{color:#D9DCE4}
-.step.key li{background:transparent;border-color:var(--line-d);color:var(--cream)}
-
-.weeks{margin-top:clamp(40px,6vw,64px);background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);padding:24px 22px 22px}
-.weeks-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:18px}
-.weeks-top b{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:1.5rem}
-.weeks-top span{font-size:.88rem;color:var(--mute-l)}
-.track{position:relative;height:56px}
-.track-line{position:absolute;left:0;right:0;top:20px;height:4px;background:var(--cream-2);border-radius:4px;overflow:hidden}
-.track-fill{position:absolute;inset:0;background:var(--mustard);transform:scaleX(var(--p,0));transform-origin:left;transition:transform .2s linear}
-.ticks{position:absolute;inset:0;display:flex;justify-content:space-between}
-.ticks span{position:relative;width:1px;font-size:.7rem;font-weight:700;color:var(--mute-l)}
-.ticks span::before{content:"";position:absolute;top:14px;left:-6px;width:12px;height:12px;border-radius:50%;background:var(--paper);border:2px solid var(--cream-2);transition:background-color .3s,border-color .3s}
-.ticks span.hit::before{background:var(--ink);border-color:var(--ink)}
-.ticks span em{position:absolute;top:36px;left:50%;transform:translateX(-50%);font-style:normal;white-space:nowrap}
-.ticks span:nth-child(even) em{display:none}
-@media (min-width:640px){.ticks span:nth-child(even) em{display:block}}
-.weeks-notes{display:grid;gap:10px;margin-top:18px;font-size:.9rem;color:var(--mute-l)}
-@media (min-width:700px){.weeks-notes{grid-template-columns:repeat(3,1fr)}}
-.weeks-notes b{color:var(--ink)}
-
-/* ---------- Servicios ---------- */
-.plans{display:grid;gap:18px}
-@media (min-width:960px){.plans{grid-template-columns:1.15fr 1fr 1fr;align-items:stretch}}
-.plan{min-width:0;overflow-wrap:anywhere;hyphens:auto;border:1px solid var(--line-d);border-radius:var(--r-md);padding:28px 24px;display:flex;flex-direction:column;gap:16px;background:var(--ink-2)}
-.plan.main{background:var(--cream);color:var(--ink);border-color:var(--cream)}
-.plan .mode{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-d)}
-.plan.main .mode{color:var(--mute-l)}
-.plan h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:2.1rem;line-height:.95}
-.plan .for{margin:0;font-size:.98rem;color:#D9DCE4}
-.plan.main .for{color:var(--mute-l)}
-.plan ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.plan li{display:flex;gap:10px;font-size:.96rem;line-height:1.45}
-.plan li::before{content:"";flex:0 0 8px;height:8px;margin-top:.5em;background:var(--mustard)}
-.plan .price{margin-top:auto;padding-top:18px;border-top:1px solid var(--line-d);display:flex;align-items:baseline;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.plan.main .price{border-color:var(--line-l)}
-.plan .price b{font-family:var(--f-display);font-weight:800;font-size:1.8rem}
-.plan .price small{font-size:.82rem;color:var(--mute-d)}
-.plan.main .price small{color:var(--mute-l)}
-.plan .btn{width:100%}
-.plan.tbd{border-style:dashed;border-color:rgba(237,176,60,.55);background:transparent}
-.flag{align-self:flex-start;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--mustard);color:var(--ink);padding:5px 9px;border-radius:4px}
-
-/* ---------- Historia ---------- */
-.story{display:grid;gap:36px;align-items:center}
-@media (min-width:960px){.story{grid-template-columns:.9fr 1.1fr;gap:72px}}
-.story .photo{aspect-ratio:4/5}
-.story-text p{margin:0 0 16px;font-size:1.06rem;color:var(--mute-l);max-width:56ch}
-.story-text p.big{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.8rem,4.6vw,2.6rem);line-height:1.02;color:var(--ink);margin-bottom:24px}
-.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:28px}
-@media (min-width:640px){.facts{grid-template-columns:repeat(4,1fr)}}
-.fact{border-top:2px solid var(--ink);padding-top:12px}
-.fact b{display:block;font-family:var(--f-display);font-weight:900;font-size:2.2rem;line-height:1}
-.fact span{font-size:.82rem;color:var(--mute-l);line-height:1.35;display:block;margin-top:4px}
-.mini-ph{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
-.mini-ph .photo{aspect-ratio:1/1}
-
-/* ---------- Testimonios (marquee) ---------- */
-.reviews{background:#EEEAE1}
-.rv-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px}
-.score{display:flex;align-items:center;gap:16px}
-.score b{font-family:var(--f-display);font-weight:900;font-size:4.4rem;line-height:.8}
-.score .stars{font-size:1.2rem}
-.score small{display:block;color:var(--mute-l);font-size:.9rem}
-.marquee{position:relative;overflow:hidden;padding:10px 0;
-  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
-          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
-.marquee + .marquee{margin-top:8px}
-.mq-track{display:flex;width:max-content;animation:mq var(--dur,52s) linear infinite}
-.marquee.rev .mq-track{animation-direction:reverse}
-.marquee:hover .mq-track,.marquee.paused .mq-track{animation-play-state:paused}
-.mq-group{display:flex;gap:16px;padding-right:16px}
-@keyframes mq{to{transform:translateX(-50%)}}
-.rv{width:min(330px,82vw);flex:0 0 auto;background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);padding:20px 20px 18px;box-shadow:0 1px 2px rgba(17,20,31,.04),0 8px 22px -18px rgba(17,20,31,.25);display:flex;flex-direction:column;gap:12px;margin:0}
-.rv-top{display:flex;justify-content:space-between;align-items:center}
-.rv .stars{font-size:.9rem}
-.rv blockquote{margin:0;font-size:.95rem;line-height:1.5;color:#2A2E3A;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden;min-height:8.6em}
-.rv-who{display:flex;align-items:center;gap:12px;margin-top:auto}
-.av{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:.85rem;background:var(--ink);color:var(--mustard);flex:0 0 40px}
-.rv-who b{display:block;font-size:.95rem;line-height:1.2}
-.rv-who span{font-size:.8rem;color:var(--mute-l)}
-.rv-more{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin-top:32px}
-.ig-test{display:grid;gap:12px;margin-top:40px}
-@media (min-width:760px){.ig-test{grid-template-columns:repeat(3,1fr)}}
-.ig-card{border:1.5px dashed rgba(17,20,31,.3);border-radius:var(--r-md);padding:20px;font-size:.88rem;color:var(--mute-l);background:rgba(255,255,255,.5)}
-.ig-card b{color:var(--ink);display:block;margin-bottom:6px}
-
-/* ---------- Lo que comparto ---------- */
-.posts{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-@media (min-width:900px){.posts{grid-template-columns:repeat(3,1fr);gap:16px}}
-.post{position:relative;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;background:var(--ink-2);border:1px solid var(--line-d);text-decoration:none;display:flex;flex-direction:column;justify-content:flex-end;padding:16px;transition:transform .45s var(--ease),border-color .3s}
-.post:hover{transform:translateY(-4px);border-color:rgba(237,176,60,.6)}
-.post .t{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(1.35rem,4.2vw,2.1rem);line-height:.98;color:var(--cream);position:relative}
-.post .t em{font-style:normal;color:var(--mustard)}
-.post .type{position:absolute;top:14px;left:14px;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-d)}
-.post .ph-note{position:absolute;top:14px;right:14px;font-size:.66rem;color:var(--mute-d);opacity:.75;max-width:12ch;text-align:right;line-height:1.25}
-.post.lightpost{background:var(--cream);border-color:var(--cream)}
-.post.lightpost .t{color:var(--ink)}
-.post.lightpost .t em{background:var(--mustard);padding:0 .1em;color:var(--ink)}
-.post.lightpost .type,.post.lightpost .ph-note{color:var(--mute-l)}
-.post-img{padding:0;background:#000}
-.post-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
-.post-img:hover img{transform:scale(1.04)}
-.socials{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-
-/* ---------- FAQ ---------- */
-.faq{display:grid;gap:10px;max-width:880px}
-.faq details{background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);transition:border-color .3s}
-.faq details[open]{border-color:rgba(17,20,31,.3)}
-.faq summary{list-style:none;cursor:pointer;padding:20px 56px 20px 22px;font-weight:700;font-size:1.04rem;position:relative;min-height:44px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:"";position:absolute;right:22px;top:50%;width:14px;height:14px;margin-top:-7px;
-  background:linear-gradient(var(--ink),var(--ink)) center/14px 2px no-repeat,linear-gradient(var(--ink),var(--ink)) center/2px 14px no-repeat;transition:transform .4s var(--ease)}
-.faq details[open] summary::after{transform:rotate(135deg)}
-.faq .ans{padding:0 22px 22px;color:var(--mute-l);max-width:70ch}
-.faq .ans p{margin:0 0 10px}
-
-/* ---------- Ubicación / mapa ---------- */
-.loc{display:grid;gap:28px}
-@media (min-width:960px){.loc{grid-template-columns:.8fr 1.2fr;gap:48px;align-items:stretch}}
-.loc-info{display:flex;flex-direction:column;gap:22px}
-.loc-row{border-top:1px solid var(--line-l);padding-top:16px}
-.loc-row .k{font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute-l);display:block;margin-bottom:6px}
-.loc-row p,.loc-row a{margin:0;font-size:1.08rem;font-weight:600;text-decoration:none}
-.loc-row a:hover{text-decoration:underline;text-underline-offset:4px}
-.map-shell{position:relative;border-radius:var(--r-lg);overflow:hidden;box-shadow:0 24px 50px -30px rgba(17,20,31,.45);border:1px solid var(--line-l);height:340px;background:#E9E5DC}
-@media (min-width:960px){.map-shell{height:460px}}
-#map{position:absolute;inset:0}
-.map-overlay{position:absolute;left:12px;top:12px;right:12px;z-index:3;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;pointer-events:none}
-.map-overlay > *{pointer-events:auto}
-.map-addr{background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-sm);padding:9px 12px;font-size:.85rem;font-weight:600;box-shadow:0 6px 16px -10px rgba(17,20,31,.4)}
-.map-overlay .btn{min-height:44px;padding:0 16px;font-size:.92rem}
-.map-fallback{position:absolute;inset:0;display:none;place-items:center;text-align:center;padding:30px;background:repeating-linear-gradient(135deg,rgba(17,20,31,.04) 0 12px,transparent 12px 24px),#E9E5DC}
-.map-fallback.show{display:grid}
-.map-fallback b{font-family:var(--f-display);font-size:2rem;text-transform:uppercase;display:block;margin-bottom:6px}
-.fs-marker{width:58px;height:58px;border-radius:50%;background:#fff;box-shadow:0 8px 20px -6px rgba(17,20,31,.55);display:grid;place-items:center;position:relative;cursor:pointer;border:0;padding:0}
-.fs-marker::after{content:"";position:absolute;bottom:-9px;left:50%;margin-left:-9px;border-left:9px solid transparent;border-right:9px solid transparent;border-top:11px solid #fff;filter:drop-shadow(0 3px 2px rgba(17,20,31,.18))}
-.fs-marker .mono{font-family:var(--f-display);font-weight:900;font-size:1.45rem;color:var(--ink);line-height:1;letter-spacing:.02em}
-.fs-marker .mono b{color:var(--mustard)}
-.fs-marker img{width:44px;height:44px;object-fit:contain;border-radius:50%}
-.maplibregl-popup-content{font-family:var(--f-text);border-radius:var(--r-md)!important;padding:14px 16px!important;box-shadow:0 14px 30px -16px rgba(17,20,31,.5)!important}
-.maplibregl-popup-content b{font-size:1rem;display:block;margin-bottom:4px}
-.maplibregl-popup-content p{margin:0;font-size:.85rem;color:var(--mute-l);line-height:1.45}
-.maplibregl-ctrl-group{border-radius:var(--r-sm)!important;box-shadow:0 4px 12px -6px rgba(17,20,31,.4)!important}
-
-/* ---------- CTA final ---------- */
-.final{padding:clamp(90px,14vw,170px) 0;text-align:left;overflow:hidden}
-.final h2{font-size:clamp(2.8rem,10vw,7rem);max-width:13ch}
-.final .lead{margin:26px 0 34px}
-.final-ctas{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
-.final .bignum{position:absolute;right:-2vw;bottom:-4vw;font-family:var(--f-display);font-weight:900;font-size:clamp(10rem,34vw,26rem);line-height:.8;color:rgba(243,239,230,.04);pointer-events:none;user-select:none}
-
-/* ---------- Footer ---------- */
-footer{background:#0B0D15;color:var(--mute-d);padding:56px 0 calc(96px + env(safe-area-inset-bottom));font-size:.92rem}
-@media (min-width:900px){footer{padding-bottom:40px}}
-.foot{display:grid;gap:32px}
-@media (min-width:900px){.foot{grid-template-columns:1.3fr 1fr 1fr 1fr}}
-.foot h4{color:var(--cream);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px}
-.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:4px}
-.foot a{text-decoration:none;display:inline-flex;min-height:36px;align-items:center}
-.foot a:hover{color:var(--mustard)}
-.foot .brand-logo{height:46px}
-.legal{margin-top:40px;padding-top:20px;border-top:1px solid var(--line-d);display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.82rem}
-
-/* ---------- CTA flotante móvil ---------- */
-.fab{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom));z-index:60;display:flex;gap:10px;transform:translateY(140%);transition:transform .5s var(--ease)}
-.fab.show{transform:none}
-.fab .btn{flex:1;min-height:56px;box-shadow:0 16px 30px -12px rgba(0,0,0,.55);font-size:1.05rem}
-@media (min-width:900px){.fab{display:none}}
-
-/* ============================================================
-   Flujo "Empieza"
-   ============================================================ */
-.flow{position:fixed;inset:0;z-index:100;display:flex;align-items:flex-end;justify-content:center;visibility:hidden;pointer-events:none}
-.flow.open{visibility:visible;pointer-events:auto}
-.flow-bg{position:absolute;inset:0;background:rgba(9,11,18,.72);opacity:0;transition:opacity .45s var(--ease)}
-.flow.open .flow-bg{opacity:1}
-.flow-panel{position:relative;width:100%;max-width:620px;max-height:94dvh;background:var(--cream);color:var(--ink);border-radius:18px 18px 0 0;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .55s var(--ease);overflow:hidden}
-.flow.open .flow-panel{transform:none}
-@media (min-width:760px){.flow{align-items:center}.flow-panel{border-radius:var(--r-lg);transform:translateY(30px) scale(.98);opacity:0;transition:transform .55s var(--ease),opacity .4s var(--ease)}.flow.open .flow-panel{transform:none;opacity:1}}
-.flow-top{padding:18px 20px 14px;background:var(--ink);color:var(--cream);display:flex;align-items:center;justify-content:space-between;gap:12px}
-.flow-top .brand-text{font-size:1.25rem}
-.flow-close{width:44px;height:44px;border-radius:var(--r-sm);border:1px solid var(--line-d);background:transparent;cursor:pointer;display:grid;place-items:center;transition:background-color .25s}
-.flow-close:hover{background:rgba(255,255,255,.08)}
-.flow-close svg{width:18px;height:18px}
-.progress{display:flex;gap:6px;padding:14px 20px 0;background:var(--ink)}
-.progress span{flex:1;height:4px;border-radius:4px;background:var(--navy);position:relative;overflow:hidden}
-.progress span::after{content:"";position:absolute;inset:0;background:var(--mustard);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
-.progress span.done::after{transform:scaleX(1)}
-.progress-label{background:var(--ink);color:var(--mute-d);font-size:.78rem;padding:8px 20px 14px;font-weight:600;letter-spacing:.04em}
-.flow-body{padding:24px 20px 8px;overflow-y:auto;flex:1;position:relative}
-.fstep{display:none}
-.fstep.active{display:block;animation:stepIn .5s var(--ease)}
-.fstep.back.active{animation:stepBack .5s var(--ease)}
-@keyframes stepIn{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:none}}
-@keyframes stepBack{from{opacity:0;transform:translateX(-24px)}to{opacity:1;transform:none}}
-.fstep h3{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,7vw,2.6rem);line-height:.95;margin-bottom:8px}
-.fstep .hint{margin:0 0 20px;color:var(--mute-l);font-size:.95rem}
-.opts{display:grid;gap:10px}
-.opts.two{grid-template-columns:1fr 1fr}
-.opt{position:relative}
-.opt input{position:absolute;opacity:0;pointer-events:none}
-.opt label{display:flex;align-items:center;gap:14px;min-height:60px;padding:14px 16px;background:var(--paper);border:1.5px solid var(--line-l);border-radius:var(--r-md);cursor:pointer;font-weight:600;transition:border-color .25s,background-color .25s,transform .3s var(--ease)}
-.opt label:hover{border-color:rgba(17,20,31,.35)}
-.opt label:active{transform:scale(.985)}
-.opt .ic{width:36px;height:36px;flex:0 0 36px;border-radius:var(--r-sm);background:var(--cream);display:grid;place-items:center;transition:background-color .25s}
-.opt .ic svg{width:20px;height:20px;stroke:var(--ink);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.opt small{display:block;font-weight:500;font-size:.82rem;color:var(--mute-l);margin-top:2px}
-.opt input:checked + label{border-color:var(--ink);background:#FFF9EC;box-shadow:inset 0 0 0 1px var(--ink)}
-.opt input:checked + label .ic{background:var(--mustard)}
-.opt input:focus-visible + label{outline:3px solid var(--mustard);outline-offset:2px}
-.opt .chk{margin-left:auto;width:22px;height:22px;border-radius:50%;border:1.5px solid var(--line-l);flex:0 0 22px;display:grid;place-items:center;transition:all .25s}
-.opt input:checked + label .chk{background:var(--ink);border-color:var(--ink)}
-.opt input:checked + label .chk::after{content:"";width:6px;height:10px;border:solid var(--mustard);border-width:0 2px 2px 0;transform:rotate(45deg) translate(-1px,-1px)}
-.subopts{margin-top:14px;display:none}
-.subopts.show{display:block;animation:stepIn .45s var(--ease)}
-.subopts p{margin:0 0 10px;font-size:.88rem;font-weight:600}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip input{position:absolute;opacity:0;pointer-events:none}
-.chip label{display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--r-sm);border:1.5px solid var(--line-l);background:var(--paper);font-size:.9rem;font-weight:600;cursor:pointer;transition:all .25s}
-.chip input:checked + label{background:var(--ink);color:var(--cream);border-color:var(--ink)}
-.chip input:focus-visible + label{outline:3px solid var(--mustard);outline-offset:2px}
-.field{display:grid;gap:6px;margin-bottom:16px}
-.field label{font-weight:700;font-size:.92rem}
-.field input,.field textarea{font:inherit;font-size:16px;padding:14px 16px;border:1.5px solid var(--line-l);border-radius:var(--r-md);background:var(--paper);color:var(--ink);min-height:52px;transition:border-color .25s,box-shadow .25s;width:100%}
-.field textarea{min-height:90px;resize:vertical}
-.field input:focus,.field textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px rgba(237,176,60,.45)}
-.field .err{color:#B0153F;font-size:.84rem;font-weight:600;display:none}
-.field.invalid .err{display:block}
-.field.invalid input{border-color:#B0153F}
-.summary{background:var(--paper);border:1px solid var(--line-l);border-radius:var(--r-md);overflow:hidden}
-.summary dl{margin:0;display:grid}
-.summary .row{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line-l);font-size:.94rem}
-.summary dt{color:var(--mute-l);font-size:.82rem;font-weight:600}
-.summary dd{margin:0;font-weight:700}
-.summary .edit{background:none;border:0;font-size:.82rem;font-weight:700;text-decoration:underline;text-underline-offset:3px;cursor:pointer;min-height:44px;padding:0 4px;color:var(--mute-l)}
-.wa-preview{margin-top:16px;background:#E7DFD2;border-radius:var(--r-md);padding:14px}
-.wa-preview .lbl{font-size:.74rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute-l);margin-bottom:8px;display:block}
-.bubble{background:#D9FDD3;color:#111;border-radius:10px 2px 10px 10px;padding:10px 12px 18px;font-size:.92rem;line-height:1.45;position:relative;margin-left:12%;box-shadow:0 1px 1px rgba(0,0,0,.08);white-space:pre-line}
-.bubble time{position:absolute;right:10px;bottom:4px;font-size:.68rem;color:#667}
-.flow-foot{padding:14px 20px calc(16px + env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;border-top:1px solid var(--line-l);background:var(--cream)}
-.flow-foot .btn{flex:1}
-.flow-foot .btn-back{flex:0 0 auto;--bg:transparent;--fg:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line-l);padding:0 18px}
-.flow-foot .btn-back:hover{box-shadow:inset 0 0 0 1.5px var(--ink)}
-.flow-foot .btn[disabled]{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
-.flow-direct{text-align:center;padding:0 20px 14px;background:var(--cream)}
-.flow-direct a{font-size:.86rem;color:var(--mute-l);text-underline-offset:3px;display:inline-flex;min-height:44px;align-items:center}
-.wa-ic{width:20px;height:20px;fill:currentColor}
-body.flow-lock{overflow:hidden}
-
-/* ---------- Reveal on scroll ---------- */
-.rv-in{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:var(--d,0s)}
-.rv-in.in{opacity:1;transform:none}
-
-/* ---------- Reduced motion ---------- */
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important}
-  .rv-in{opacity:1;transform:none}
-  .hl::before{transform:scaleX(1)}
-  .dark .hl{color:var(--ink)}
-  .sub-caption .w{opacity:1;transform:none}
-  .myth .says{background-size:100% 3px}
-  .ticker-track{animation:none}
-  .ticker-track ul[aria-hidden]{display:none}
-  .marquee{-webkit-mask-image:none;mask-image:none;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:14px}
-  .mq-track{animation:none!important}
-  .mq-group[aria-hidden]{display:none}
-  .rv{scroll-snap-align:start}
-}
-</style>
+<link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 <a class="skip" href="#main">Saltar al contenido</a>
 
-<!-- ======================= NAV ======================= -->
-<header class="nav" id="nav">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="FS Dietista, inicio">
-      <img class="brand-logo" src="logo.png" alt="Logo FSDIETISTA" width="120" height="40" onerror="this.outerHTML='<span class=&quot;brand-text&quot;><b>FS</b>DIETISTA</span>'">
-      <span class="brand-sub">Francisco Sabater<br>Dietista y entrenador</span>
-    </a>
-    <nav aria-label="Principal">
-      <ul class="nav-links">
-        <li><a href="#metodo">Método FS</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#opiniones">Opiniones</a></li>
-        <li><a href="#consulta">Consulta</a></li>
-      </ul>
-    </nav>
-    <button class="btn" type="button" data-start>Empieza</button>
+<!-- ======================= NAV (masthead) ======================= -->
+<header class="nav dark" id="nav">
+  <div class="container">
+    <p class="nav-who">Francisco Sabater<br>Dietista y entrenador</p>
+    <a class="brand" href="#top" aria-label="FS Dietista, inicio"><span class="wordmark"><b>FS</b>DIETISTA</span></a>
+    <div class="nav-right">
+      <nav aria-label="Principal">
+        <ul class="nav-links">
+          <li><a href="#metodo">Método FS</a></li>
+          <li><a href="#servicios">Servicios</a></li>
+          <li><a href="#opiniones">Opiniones</a></li>
+          <li><a href="#consulta">Consulta</a></li>
+        </ul>
+      </nav>
+      <button class="btn" type="button" data-start>Empieza</button>
+    </div>
   </div>
 </header>
 
@@ -567,159 +95,99 @@ body.flow-lock{overflow:hidden}
 
 <!-- ======================= HERO ======================= -->
 <section class="hero dark" id="top" aria-labelledby="h1">
-  <div class="wrap hero-grid">
+  <div class="container hero-grid">
     <div>
-      <p class="hero-tag"><span class="dot-live" aria-hidden="true"></span> Online y presencial en Catarroja</p>
-      <h1 id="h1" class="display">
-        <span class="line rv-in">Un físico</span>
-        <span class="line rv-in" style="--d:.08s">que también</span>
-        <span class="line rv-in" style="--d:.16s"><span class="hl" data-hl>rinde.</span></span>
-      </h1>
-      <p class="lead rv-in" style="--d:.24s">Nutrición y entrenamiento, con una sola persona, para deportistas +25 que trabajan, tienen poco tiempo y quieren progresar sin vivir en el gimnasio.</p>
-      <div class="hero-ctas rv-in" style="--d:.32s">
-        <button class="btn" type="button" data-start>Empieza <span class="arr" aria-hidden="true">→</span></button>
-        <a class="btn btn-ghost" href="#metodo">Ver cómo trabajo</a>
-      </div>
-      <div class="trust rv-in" style="--d:.4s">
-        <div class="trust-item"><strong>5,0</strong><span><span class="stars" aria-hidden="true">★★★★★</span><br>26 reseñas en Google</span></div>
-        <div class="trust-item"><strong>+8</strong><span>años como<br>autónomo (desde 2018)</span></div>
-        <div class="trust-item"><strong>1</strong><span>persona para tu dieta<br>y tu entrenamiento</span></div>
+      <h1 id="h1">Un físico que también rinde.</h1>
+      <p class="lead">Nutrición y entrenamiento con una sola persona, para deportistas +25 con poco tiempo.</p>
+      <div class="actions">
+        <button class="btn" type="button" data-start>Empieza</button>
+        <a class="link" href="#metodo">Ver cómo trabajo</a>
       </div>
     </div>
-    <div class="hero-media rv-in" style="--d:.2s">
-      <div class="photo">
-        <!-- Provisional (captura de un reel). Sustituir por foto HD: [FOTO HD: Francisco a cámara en consulta] -->
-        <img src="img/foto-hero.jpg" alt="Francisco Sabater, dietista y entrenador, hablando a cámara" width="391" height="448" fetchpriority="high">
-        <span class="badge-online"><i aria-hidden="true"></i>Catarroja · Online</span>
-        <p class="sub-caption" aria-hidden="true" id="caption"><span class="w">La</span> <span class="w key">adherencia</span><br><span class="w">le gana a la</span> <span class="w key">perfección</span></p>
-      </div>
-    </div>
+    <figure class="reel" data-slot="hero" data-alt="Francisco a cámara en su consulta de Catarroja, foto en alta resolución, vertical 4:5">
+      <img src="img/foto-hero.jpg" alt="Francisco Sabater, dietista y entrenador, hablando a cámara" width="391" height="448" fetchpriority="high">
+      <p class="reel-line" aria-hidden="true" id="caption" data-keep><span class="w">La</span> <span class="w key">adherencia</span><br><span class="w">le gana a la</span> <span class="w key">perfección</span></p>
+    </figure>
   </div>
 </section>
 
-<!-- ticker -->
-<div class="ticker" aria-hidden="true">
-  <div class="ticker-track">
-    <ul>
-      <li>No somos perfectos</li><li>Estamos aprendiendo</li><li>Elegimos volver</li><li>Nutrición + entrenamiento</li><li>Sin promesas absurdas</li><li>Los sistemas permanecen</li>
-    </ul>
-    <ul aria-hidden="true">
-      <li>No somos perfectos</li><li>Estamos aprendiendo</li><li>Elegimos volver</li><li>Nutrición + entrenamiento</li><li>Sin promesas absurdas</li><li>Los sistemas permanecen</li>
-    </ul>
-  </div>
-</div>
-
 <!-- ======================= PARA QUIÉN ======================= -->
 <section class="sec light" id="para-quien" aria-labelledby="h-quien">
-  <div class="wrap">
-    <p class="kicker">Para quién es</p>
-    <h2 id="h-quien" class="niche rv-in">Deportistas +25 que quieren <span class="hl" data-hl>progresar</span> <span class="soft">sin vivir en el gimnasio.</span></h2>
-    <div class="situations">
-      <article class="sit rv-in">
-        <q>No tengo una hora libre</q>
+  <div class="container">
+    <h2 id="h-quien" class="niche">Deportistas +25 que quieren progresar sin vivir en el gimnasio.</h2>
+    <ul class="rows">
+      <li>
+        <span class="row-tag">Poco tiempo</span>
+        <q class="row-q">No tengo una hora libre</q>
         <p>Trabajo, casa, horarios que cambian. Necesitas un plan que entre en tu semana real, no en la de un atleta profesional.</p>
-        <span class="tag">Poco tiempo</span>
-      </article>
-      <article class="sit rv-in" style="--d:.08s">
-        <q>El peso no cambia</q>
-        <p>Entrenas, comes "bien" y la báscula no se mueve. Hay que mirar más cosas que un número y ajustar con criterio.</p>
-        <span class="tag">Estancado</span>
-      </article>
-      <article class="sit rv-in" style="--d:.16s">
-        <q>Ya sé lo que tengo que hacer</q>
+      </li>
+      <li>
+        <span class="row-tag">Estancado</span>
+        <q class="row-q">El peso no cambia</q>
+        <p>Entrenas, comes “bien” y la báscula no se mueve. Hay que mirar más cosas que un número y ajustar con criterio.</p>
+      </li>
+      <li>
+        <span class="row-tag">Constancia</span>
+        <q class="row-q">Ya sé lo que tengo que hacer</q>
         <p>Lo difícil es hacerlo cuando la vida aprieta. El problema no es tu fuerza de voluntad: es que nadie te ha dado un sistema que puedas sostener.</p>
-        <span class="tag">Constancia</span>
-      </article>
-      <article class="sit rv-in" style="--d:.24s">
-        <q>Quiero rendir, no solo verme bien</q>
+      </li>
+      <li>
+        <span class="row-tag">Rendimiento</span>
+        <q class="row-q">Quiero rendir, no solo verme bien</q>
         <p>Fuerza, carrera, ciclismo, HYROX… Que lo que comes y cómo entrenas empujen en la misma dirección.</p>
-        <span class="tag">Rendimiento</span>
-      </article>
-    </div>
+      </li>
+    </ul>
   </div>
 </section>
 
 <!-- ======================= MITOS ======================= -->
-<section class="sec dark" id="lo-que-nadie-te-dice" aria-labelledby="h-mitos">
-  <div class="wrap">
-    <div class="sec-head split">
-      <div>
-        <p class="kicker">Lo que nadie te dice</p>
-        <h2 id="h-mitos" class="display rv-in">Menos <span class="hl" data-hl>perfección</span>.<br>Más sistema.</h2>
-      </div>
-      <p class="lead rv-in">Lo que suelo explicar en consulta y en mis reels, sin rodeos. Ciencia contada en llano.</p>
+<section class="sec-s dark" id="lo-que-nadie-te-dice" aria-labelledby="h-mitos">
+  <div class="container">
+    <div class="head">
+      <h2 id="h-mitos">Menos perfección.<br>Más sistema.</h2>
+      <p class="lead">Lo que suelo explicar en consulta y en mis reels, sin rodeos. Ciencia contada en llano.</p>
     </div>
-    <div class="myths">
-      <article class="myth rv-in" data-strike>
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Cuanto menos comas, mejor.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p>Comer muy poco suele traer <b>más hambre</b> y un plan imposible de aguantar. Lo que funciona es lo que puedes mantener.</p></div>
-      </article>
-      <article class="myth rv-in" data-strike style="--d:.08s">
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Ayer cené Burger King y unas Oreo. Lo he estropeado.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p>Una comida no cambia tu composición corporal. <b>Lo que la cambia son las decisiones que tomas la mayoría de los días.</b> Si al día siguiente vuelves a tu plan, has construido adherencia.</p></div>
-      </article>
-      <article class="myth rv-in" data-strike style="--d:.16s">
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Te falta fuerza de voluntad.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p>La motivación va y viene. <b>Los sistemas permanecen.</b> Por eso planificamos para tus peores semanas, no para las mejores.</p></div>
-      </article>
-      <article class="myth rv-in" data-strike>
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Si la báscula no baja, no funciona.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p>El peso fluctúa por agua, digestión o entrenamiento. <b>El peso no lo es todo:</b> también miramos perímetros, rendimiento y cómo te encuentras.</p></div>
-      </article>
-      <article class="myth rv-in" data-strike style="--d:.08s">
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Sin una hora libre, no merece la pena entrenar.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p>Sesiones cortas y bien planificadas <b>suman</b>. Es mejor algo que puedas repetir cada semana que el entreno perfecto que nunca haces.</p></div>
-      </article>
-      <article class="myth rv-in" data-strike style="--d:.16s">
-        <span class="lbl">Lo que te han dicho</span>
-        <h3><span class="says">Necesitas un detox.</span></h3>
-        <div class="real"><span class="lbl">Lo que funciona</span><p><b>No necesitas detox.</b> Necesitas hábitos que puedas sostener: comer suficiente, dormir, moverte y entrenar fuerza.</p></div>
-      </article>
-    </div>
+    <table class="myths">
+      <thead><tr><th scope="col">Lo que te han dicho</th><th scope="col">Lo que funciona</th></tr></thead>
+      <tbody>
+        <tr data-strike><td><h3 class="says"><s>Cuanto menos comas, mejor.</s></h3></td><td><p>Comer muy poco suele traer <b>más hambre</b> y un plan imposible de aguantar. Lo que funciona es lo que puedes mantener.</p></td></tr>
+        <tr data-strike><td><h3 class="says"><s>Ayer cené Burger King y unas Oreo. Lo he estropeado.</s></h3></td><td><p>Una comida no cambia tu composición corporal. <b>Lo que la cambia son las decisiones que tomas la mayoría de los días.</b> Si al día siguiente vuelves a tu plan, has construido adherencia.</p></td></tr>
+        <tr data-strike><td><h3 class="says"><s>Te falta fuerza de voluntad.</s></h3></td><td><p>La motivación va y viene. <b>Los sistemas permanecen.</b> Por eso planificamos para tus peores semanas, no para las mejores.</p></td></tr>
+        <tr data-strike><td><h3 class="says"><s>Si la báscula no baja, no funciona.</s></h3></td><td><p>El peso fluctúa por agua, digestión o entrenamiento. <b>El peso no lo es todo:</b> también miramos perímetros, rendimiento y cómo te encuentras.</p></td></tr>
+        <tr data-strike><td><h3 class="says"><s>Sin una hora libre, no merece la pena entrenar.</s></h3></td><td><p>Sesiones cortas y bien planificadas <b>suman</b>. Es mejor algo que puedas repetir cada semana que el entreno perfecto que nunca haces.</p></td></tr>
+        <tr data-strike><td><h3 class="says"><s>Necesitas un detox.</s></h3></td><td><p><b>No necesitas detox.</b> Necesitas hábitos que puedas sostener: comer suficiente, dormir, moverte y entrenar fuerza.</p></td></tr>
+      </tbody>
+    </table>
     <p class="disclaimer">Información general y divulgativa. Cada caso se valora de forma individual. No sustituye la atención médica cuando hay una patología.</p>
   </div>
 </section>
 
 <!-- ======================= MÉTODO ======================= -->
-<section class="sec light" id="metodo" aria-labelledby="h-metodo">
-  <div class="wrap">
-    <div class="sec-head split">
-      <div>
-        <p class="kicker">Mi método</p>
-        <h2 id="h-metodo" class="display rv-in">Método <span class="hl" data-hl>FS</span></h2>
-      </div>
-      <p class="lead rv-in">No recibes una dieta y una rutina para que te las apañes. Recibes una estrategia, y alguien que la ajusta contigo cuando las cosas cambian.</p>
+<section class="sec-l light" id="metodo" aria-labelledby="h-metodo">
+  <div class="container">
+    <div class="head">
+      <h2 id="h-metodo">Método FS</h2>
+      <p class="lead">No recibes una dieta y una rutina para que te las apañes. Recibes una estrategia, y alguien que la ajusta contigo cuando las cosas cambian.</p>
     </div>
-    <div class="method">
-      <article class="step rv-in">
-        <span class="phase" aria-hidden="true">1</span>
-        <span class="k">Fase 1</span>
+    <ol class="steps">
+      <li>
         <h3>Analizamos tu situación</h3>
         <p>Tus hábitos, horarios, alimentación, entrenamiento y lo que te ha impedido avanzar hasta ahora.</p>
         <ul><li>Hábitos</li><li>Horarios</li><li>Entreno actual</li><li>Qué ha fallado</li></ul>
-      </article>
-      <article class="step rv-in" style="--d:.1s">
-        <span class="phase" aria-hidden="true">2</span>
-        <span class="k">Fase 2</span>
+      </li>
+      <li>
         <h3>Construimos tu planificación</h3>
         <p>Nutrición y entrenamiento trabajando juntos, con una estrategia adaptada a tu objetivo y a tu vida.</p>
         <ul><li>Plan de nutrición</li><li>Plan de entrenamiento</li><li>A tu medida</li></ul>
-      </article>
-      <article class="step key rv-in" style="--d:.2s">
-        <span class="phase" aria-hidden="true">3</span>
-        <span class="k">Fase 3 · lo más importante</span>
+      </li>
+      <li class="key">
         <h3>Seguimiento y ajustes</h3>
-        <p>Revisamos tu evolución, vemos qué funciona y ajustamos. Una planificación no debería acabar olvidada en una carpeta.</p>
-        <ul><li>Revisiones [PERIODICIDAD]</li><li>Dudas por WhatsApp</li><li>Ajustes</li></ul>
-      </article>
-    </div>
+        <p><b>Lo más importante.</b> Revisamos tu evolución, vemos qué funciona y ajustamos. Una planificación no debería acabar olvidada en una carpeta.</p>
+        <ul><li>Revisiones</li><li>Dudas por WhatsApp</li><li>Ajustes</li></ul>
+      </li>
+    </ol>
 
-    <div class="weeks rv-in" id="weeks">
+    <div class="weeks" id="weeks">
       <div class="weeks-top"><b>Semana a semana</b><span>El progreso no es lineal. El sistema sí.</span></div>
       <div class="track" aria-hidden="true">
         <div class="track-line"><div class="track-fill" id="trackFill"></div></div>
@@ -736,217 +204,177 @@ body.flow-lock{overflow:hidden}
 
 <!-- ======================= SERVICIOS ======================= -->
 <section class="sec dark" id="servicios" aria-labelledby="h-serv">
-  <div class="wrap">
-    <div class="sec-head split">
-      <div>
-        <p class="kicker">Servicios</p>
-        <h2 id="h-serv" class="display rv-in">Elige cómo<br><span class="hl" data-hl>trabajamos</span></h2>
-      </div>
-      <p class="lead rv-in">Mismo método, dos formatos. Si no sabes cuál te encaja, empieza el formulario y lo vemos.</p>
+  <div class="container">
+    <div class="head">
+      <h2 id="h-serv">Elige cómo<br>trabajamos</h2>
+      <p class="lead">Mismo método, dos formatos. Si no sabes cuál te encaja, empieza el formulario y lo vemos.</p>
     </div>
     <div class="plans">
-      <article class="plan main rv-in">
-        <span class="mode">Online · desde cualquier sitio</span>
+      <article class="plan main">
         <h3>Asesoría nutrición + entrenamiento</h3>
+        <p class="mode">Online, desde cualquier sitio</p>
         <p class="for">Para quien entrena (o quiere empezar) y necesita que dieta y entreno vayan de la mano, con seguimiento real.</p>
         <ul>
           <li>Análisis inicial de hábitos, horarios y entrenamiento</li>
           <li>Planificación de nutrición adaptada a tus gustos</li>
           <li>Plan de entrenamiento según tu tiempo y tu deporte</li>
-          <li>Seguimiento y ajustes [PERIODICIDAD]</li>
+          <li>Seguimiento y ajustes</li>
           <li>Dudas resueltas por WhatsApp</li>
         </ul>
-        <div class="price"><b>[PRECIO]</b><small>[DURACIÓN / MODALIDAD DE PAGO]</small></div>
-        <button class="btn btn-ink" type="button" data-start data-mode="online">Empieza online <span class="arr" aria-hidden="true">→</span></button>
+        <button class="btn" type="button" data-start data-mode="online">Empieza online</button>
       </article>
-      <article class="plan rv-in" style="--d:.1s">
-        <span class="mode">Presencial · Catarroja</span>
+      <article class="plan">
         <h3>Consulta en Camí Real 63</h3>
-        <p class="for">Para quien prefiere verse cara a cara: pérdida de grasa, salud, rendimiento. Para gente de Catarroja y l'Horta Sud.</p>
+        <p class="mode">Presencial, en Catarroja</p>
+        <p class="for">Para quien prefiere verse cara a cara: pérdida de grasa, salud, rendimiento. Para gente de Catarroja y l’Horta Sud.</p>
         <ul>
-          <li>Primera visita: [QUÉ INCLUYE LA PRIMERA VISITA]</li>
           <li>Mismo Método FS: análisis, plan y seguimiento</li>
-          <li>Revisiones en consulta [PERIODICIDAD]</li>
+          <li>Revisiones en consulta</li>
         </ul>
-        <div class="price"><b>[PRECIO]</b><small>[HORARIO]</small></div>
-        <button class="btn" type="button" data-start data-mode="presencial">Pedir consulta <span class="arr" aria-hidden="true">→</span></button>
-      </article>
-      <article class="plan tbd rv-in" style="--d:.2s">
-        <span class="flag">Por confirmar con Francisco</span>
-        <span class="mode">[PROGRAMA PROPIO]</span>
-        <h3>[84 días · 12 semanas]</h3>
-        <p class="for">Si existe como programa cerrado, aquí iría el producto estrella: duración, para quién y qué incluye.</p>
-        <ul>
-          <li>[QUÉ INCLUYE]</li>
-          <li>[PARA QUIÉN]</li>
-        </ul>
-        <div class="price"><b>[PRECIO]</b><small>[FECHAS / PLAZAS]</small></div>
+        <button class="btn btn--quiet" type="button" data-start data-mode="presencial">Pedir consulta</button>
       </article>
     </div>
+    <p class="plan-note">El precio depende de la modalidad y del seguimiento: cuéntame tu caso y te respondo con la opción que te encaja.</p>
   </div>
 </section>
 
 <!-- ======================= MI HISTORIA ======================= -->
-<section class="sec light" id="historia" aria-labelledby="h-hist">
-  <div class="wrap story">
-    <div class="rv-in">
-      <div class="photo">
-        <!-- Provisional (captura de un reel). Sustituir por foto HD -->
+<section class="sec-l light" id="historia" aria-labelledby="h-hist">
+  <div class="container grid story">
+    <div class="story-media">
+      <figure class="ph a" data-slot="consulta" data-alt="Francisco en su consulta de Catarroja, foto en alta resolución, horizontal">
         <img src="img/foto-consulta.jpg" alt="Francisco Sabater en su consulta de Catarroja" width="390" height="350" loading="lazy">
-      </div>
-      <div class="mini-ph">
-        <div class="photo"><img src="img/foto-hyrox.jpg" alt="Competición HYROX, imagen de un reel de @fs.nutricion" width="390" height="406" loading="lazy"></div>
-        <div class="photo"><div class="ph"><span>[FOTO: Francisco entrenando en el gimnasio]</span></div></div>
-      </div>
+      </figure>
+      <figure class="ph b" data-slot="hyrox" data-alt="Francisco compitiendo en HYROX, foto en alta resolución">
+        <img src="img/foto-hyrox.jpg" alt="Competición HYROX, imagen de un reel de @fs.nutricion" width="390" height="406" loading="lazy">
+      </figure>
     </div>
     <div class="story-text">
-      <p class="kicker">Mi historia</p>
-      <h2 id="h-hist" class="display rv-in" style="margin-bottom:24px">Soy Francisco.<br><span class="hl" data-hl>Paco</span>, para los que entrenan conmigo.</h2>
-      <p class="big rv-in">Dietista integrativo, preparador físico y deportista. Trabajo con lo que tú también tienes: poco tiempo y una vida real.</p>
-      <p class="rv-in">Desde 2018 me dedico a ayudar a personas que entrenan, o quieren empezar, a comer y entrenar con un plan que tenga sentido para su día a día. Llevo la nutrición y el entrenamiento juntos, porque separados se pisan.</p>
-      <p class="rv-in">[MI HISTORIA: resumir la destacada "Mi Historia" de Instagram — por qué empezó, su propio proceso, qué le llevó a trabajar así.]</p>
-      <p class="rv-in">Entreno y compito en HYROX, así que sé lo que es encajar entrenos entre el trabajo y todo lo demás. No somos perfectos, estamos aprendiendo y elegimos volver.</p>
-      <p class="rv-in"><strong>Formación:</strong> [TITULACIÓN DIETISTA] · [TITULACIÓN ENTRENADOR / PREPARADOR FÍSICO] · [Nº COLEGIADO si aplica]</p>
-      <div class="facts rv-in">
+      <h2 id="h-hist">Soy Francisco.<br>Paco, para los que entrenan conmigo.</h2>
+      <p class="big">Dietista integrativo, preparador físico y deportista. Trabajo con lo que tú también tienes: poco tiempo y una vida real.</p>
+      <p>Desde 2018 me dedico a ayudar a personas que entrenan, o quieren empezar, a comer y entrenar con un plan que tenga sentido para su día a día. Llevo la nutrición y el entrenamiento juntos, porque separados se pisan.</p>
+      <p>Entreno y compito en HYROX, así que sé lo que es encajar entrenos entre el trabajo y todo lo demás. No somos perfectos, estamos aprendiendo y elegimos volver.</p>
+      <div class="facts">
         <div class="fact"><b>2018</b><span>autónomo desde septiembre</span></div>
         <div class="fact"><b>5,0</b><span>de nota con 26 reseñas en Google</span></div>
         <div class="fact"><b>2 en 1</b><span>dieta y entreno con una persona</span></div>
-        <div class="fact"><b>[Nº]</b><span>[DATO A CONFIRMAR]</span></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ======================= TESTIMONIOS ======================= -->
-<section class="sec reviews" id="opiniones" aria-labelledby="h-op">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Opiniones reales</p>
-      <div class="rv-head">
-        <h2 id="h-op" class="display rv-in">Lo que dicen<br>de <span class="hl" data-hl>Paco</span></h2>
-        <div class="score rv-in">
-          <b>5,0</b>
-          <div><span class="stars" aria-label="5 de 5 estrellas">★★★★★</span><small>26 reseñas en Google</small></div>
-        </div>
+<section class="sec tint" id="opiniones" aria-labelledby="h-op">
+  <div class="container">
+    <div class="rv-head">
+      <h2 id="h-op">Lo que dicen<br>de Paco</h2>
+      <div class="score">
+        <b>5,0</b>
+        <div><span class="stars" role="img" aria-label="5 de 5 estrellas">★★★★★</span><small>26 reseñas en Google</small></div>
       </div>
     </div>
   </div>
-  <div class="marquee" data-marquee role="group" style="--dur:58s" aria-label="Reseñas de Google, fila 1"><div class="mq-track"><div class="mq-group" id="row1"></div></div></div>
-  <div class="marquee rev" data-marquee role="group" style="--dur:64s" aria-label="Reseñas de Google, fila 2"><div class="mq-track"><div class="mq-group" id="row2"></div></div></div>
-  <div class="wrap">
+  <div class="reviews-rail" tabindex="0" role="region" aria-label="Reseñas de Google, desliza para leer más">
+    <div class="mq-group" id="row1"></div>
+    <div class="mq-group" id="row2"></div>
+  </div>
+  <div class="container">
     <div class="rv-more">
-      <a class="btn btn-ink" href="https://maps.google.com/?cid=15658238626307433319" target="_blank" rel="noopener">Leer todas las opiniones en Google <span class="arr" aria-hidden="true">→</span></a>
-      <span style="font-size:.85rem;color:var(--mute-l)">Reseñas copiadas tal cual de Google Maps. El texto largo se recorta.</span>
-    </div>
-    <div class="ig-test">
-      <div class="ig-card"><b>[TESTIMONIO DE INSTAGRAM – pedir permiso]</b>Captura o texto de la destacada "Testimonios". Nombre y deporte.</div>
-      <div class="ig-card"><b>[TESTIMONIO DE INSTAGRAM – pedir permiso]</b>Sin fotos de antes/después ni cifras de kilos.</div>
-      <div class="ig-card"><b>[TESTIMONIO DE INSTAGRAM – pedir permiso]</b>Mejor si habla de rendimiento, constancia o cómo se siente.</div>
+      <a class="btn btn--quiet" href="https://maps.google.com/?cid=15658238626307433319" target="_blank" rel="noopener">Leer todas en Google</a>
+      <small>Reseñas copiadas tal cual de Google Maps.</small>
     </div>
   </div>
 </section>
 
 <!-- ======================= LO QUE COMPARTO ======================= -->
 <section class="sec dark" id="comparto" aria-labelledby="h-comp">
-  <div class="wrap">
-    <div class="sec-head split">
-      <div>
-        <p class="kicker">Lo que comparto</p>
-        <h2 id="h-comp" class="display rv-in">Casi cada día,<br>en <span class="hl" data-hl>Instagram</span></h2>
-      </div>
-      <p class="lead rv-in">Reels a cámara desde la consulta, estudios contados en llano y la vida real de entrenar con poco tiempo.</p>
+  <div class="container">
+    <div class="head">
+      <h2 id="h-comp">Casi cada día,<br>en Instagram</h2>
+      <p class="lead">Reels a cámara desde la consulta, estudios contados en llano y la vida real de entrenar con poco tiempo.</p>
     </div>
     <div class="posts">
-      <a class="post post-img rv-in" style="--d:0.00s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-burger-king.jpg" alt="Ayer cené Burger King y unas Oreo. La adherencia siempre le gana a la perfección" width="390" height="520" loading="lazy"></a>
-      <a class="post post-img rv-in" style="--d:0.06s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-peso-no-cambia.jpg" alt="Reel: ¿El peso no cambia?" width="390" height="520" loading="lazy"></a>
-      <a class="post post-img rv-in" style="--d:0.12s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-abandonan.jpg" alt="La mayoría de personas abandonan justo antes de empezar a ver resultados" width="390" height="520" loading="lazy"></a>
-      <a class="post post-img rv-in" style="--d:0.00s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-pizza.jpg" alt="Reel: El problema no es la pizza" width="390" height="520" loading="lazy"></a>
-      <a class="post post-img rv-in" style="--d:0.06s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-semana-9.jpg" alt="El caos también forma parte del proceso. Semana 9" width="390" height="520" loading="lazy"></a>
-      <a class="post post-img rv-in" style="--d:0.12s" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-hora-libre.jpg" alt="Reel: ¿Sin una hora libre, entrenas?" width="390" height="520" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-burger-king.jpg" alt="Ayer cené Burger King y unas Oreo. La adherencia siempre le gana a la perfección" width="390" height="522" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-peso-no-cambia.jpg" alt="Reel: ¿El peso no cambia?" width="391" height="523" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-abandonan.jpg" alt="La mayoría de personas abandonan justo antes de empezar a ver resultados" width="390" height="522" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-pizza.jpg" alt="Reel: El problema no es la pizza" width="391" height="486" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/post-semana-9.jpg" alt="El caos también forma parte del proceso. Semana 9" width="390" height="520" loading="lazy"></a>
+      <a class="post" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener"><img src="img/reel-hora-libre.jpg" alt="Reel: ¿Sin una hora libre, entrenas?" width="390" height="523" loading="lazy"></a>
     </div>
-    <div class="socials">
-      <a class="btn" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener">Sígueme en Instagram · @fs.nutricion</a>
-      <a class="btn btn-ghost" href="[URL FACEBOOK]" target="_blank" rel="noopener">Facebook</a>
+    <div class="socials actions">
+      <a class="btn" href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+      <a class="link" href="[URL FACEBOOK]" target="_blank" rel="noopener">Facebook</a>
     </div>
   </div>
 </section>
 
 <!-- ======================= FAQ ======================= -->
 <section class="sec light" id="faq" aria-labelledby="h-faq">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Preguntas frecuentes</p>
-      <h2 id="h-faq" class="display rv-in">Antes de <span class="hl" data-hl>escribirme</span></h2>
-    </div>
+  <div class="container grid faq-wrap">
+    <h2 id="h-faq">Antes de escribirme</h2>
     <div class="faq">
       <details><summary>¿Es mejor online o presencial?</summary><div class="ans"><p>Las dos modalidades siguen el mismo Método FS. La presencial es en mi consulta de Catarroja (Camí Real 63). La online funciona igual de bien si vives fuera o vas justo de tiempo.</p></div></details>
-      <details><summary>¿Cuánto cuesta?</summary><div class="ans"><p>[PRECIOS]. Depende de la modalidad y del seguimiento. Cuéntame tu caso en el formulario y te respondo con la opción que te encaja.</p></div></details>
+      <details><summary>¿Cuánto cuesta?</summary><div class="ans"><p>Depende de la modalidad y del seguimiento. Cuéntame tu caso en el formulario y te respondo con la opción que te encaja.</p></div></details>
       <details><summary>¿Voy a pasar hambre?</summary><div class="ans"><p>No es la idea. Comer demasiado poco suele traer más hambre y más abandono. El plan se adapta a tus gustos y a tu día a día para que puedas mantenerlo.</p></div></details>
-      <details><summary>¿Necesito ir al gimnasio?</summary><div class="ans"><p>[CONFIRMAR: opciones sin gimnasio / en casa]. El entrenamiento se diseña según el tiempo y el material que tengas.</p></div></details>
+      <details><summary>¿Necesito ir al gimnasio?</summary><div class="ans"><p>El entrenamiento se diseña según el tiempo y el material que tengas.</p></div></details>
       <details><summary>Tengo muy poco tiempo. ¿Me sirve?</summary><div class="ans"><p>Es justo para quien trabaja y va justo. El plan parte de los días reales que puedes entrenar, aunque sean pocos.</p></div></details>
       <details><summary>Entreno HYROX, CrossFit o corro. ¿Me sirve?</summary><div class="ans"><p>Sí. Trabajo con gente que hace fuerza, carrera, ciclismo y deportes híbridos, y ajusto la nutrición y la planificación a tu deporte.</p></div></details>
-      <details><summary>¿Cada cuánto es el seguimiento?</summary><div class="ans"><p>[PERIODICIDAD DE REVISIONES]. Entre revisiones puedes escribirme por WhatsApp para resolver dudas.</p></div></details>
+      <details><summary>¿Cada cuánto es el seguimiento?</summary><div class="ans"><p>Entre revisiones puedes escribirme por WhatsApp para resolver dudas.</p></div></details>
       <details><summary>¿Y si tengo alguna patología?</summary><div class="ans"><p>Cuéntamelo desde el principio. Valoraremos tu caso y, si hace falta, trabajaremos coordinados con tu médico.</p></div></details>
     </div>
   </div>
 </section>
 
 <!-- ======================= UBICACIÓN ======================= -->
-<section class="sec light" id="consulta" aria-labelledby="h-loc" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <p class="kicker">Consulta presencial</p>
-      <h2 id="h-loc" class="display rv-in">En <span class="hl" data-hl>Catarroja</span></h2>
+<section class="sec-s tint" id="consulta" aria-labelledby="h-loc">
+  <div class="container grid loc">
+    <div class="loc-info">
+      <h2 id="h-loc">En Catarroja</h2>
+      <dl>
+        <div class="loc-row"><dt>Dirección</dt><dd>Camí Real, 63<br>46470 Catarroja (Valencia)</dd></div>
+        <div class="loc-row"><dt>Horario</dt><dd><span class="fill" data-fill="horario">Horario por confirmar</span></dd></div>
+        <div class="loc-row"><dt>Teléfono</dt><dd><a href="tel:+34651415049">651 41 50 49</a></dd></div>
+        <div class="loc-row"><dt>Online</dt><dd>Para toda España</dd></div>
+      </dl>
+      <div><a class="btn btn--quiet" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20Real%2063%2C%2046470%20Catarroja%2C%20Valencia" target="_blank" rel="noopener">Cómo llegar</a></div>
     </div>
-    <div class="loc">
-      <div class="loc-info">
-        <div class="loc-row"><span class="k">Dirección</span><p>Camí Real, 63<br>46470 Catarroja (Valencia)</p></div>
-        <div class="loc-row"><span class="k">Horario</span><p>[HORARIO]</p></div>
-        <div class="loc-row"><span class="k">Teléfono</span><a href="tel:+34651415049">651 41 50 49</a></div>
-        <div class="loc-row"><span class="k">Online</span><p>Para toda España</p></div>
-        <div><a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20Real%2063%2C%2046470%20Catarroja%2C%20Valencia" target="_blank" rel="noopener">Cómo llegar <span class="arr" aria-hidden="true">→</span></a></div>
+    <div class="map-shell" id="mapShell">
+      <div class="map-overlay">
+        <span class="map-addr">Camí Real 63, Catarroja</span>
       </div>
-      <div class="map-shell" id="mapShell">
-        <div class="map-overlay">
-          <span class="map-addr">Camí Real 63, Catarroja</span>
-          <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20Real%2063%2C%2046470%20Catarroja%2C%20Valencia" target="_blank" rel="noopener">Cómo llegar</a>
-        </div>
-        <div id="map" role="region" aria-label="Mapa en 3D de la consulta en Camí Real 63, Catarroja"></div>
-        <div class="map-fallback" id="mapFallback">
-          <div><b>Camí Real 63</b><p>46470 Catarroja (Valencia)</p><a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20Real%2063%2C%2046470%20Catarroja%2C%20Valencia" target="_blank" rel="noopener">Cómo llegar</a></div>
-        </div>
+      <div id="map" role="region" aria-label="Mapa en 3D de la consulta en Camí Real 63, Catarroja"></div>
+      <div class="map-fallback" id="mapFallback">
+        <div><b>Camí Real 63</b><p>46470 Catarroja (Valencia)</p><a class="btn btn--quiet" href="https://www.google.com/maps/dir/?api=1&destination=Cam%C3%AD%20Real%2063%2C%2046470%20Catarroja%2C%20Valencia" target="_blank" rel="noopener">Abrir en Google Maps</a></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ======================= CTA FINAL ======================= -->
-<section class="final dark" aria-labelledby="h-final">
-  <span class="bignum" aria-hidden="true">FS</span>
-  <div class="wrap">
-    <p class="kicker">Empieza</p>
-    <h2 id="h-final" class="display rv-in">La mayoría abandona justo antes de <span class="hl" data-hl>ver resultados</span>.</h2>
-    <p class="lead rv-in">Contesta cuatro preguntas (tardas un minuto) y me llega tu caso por WhatsApp. Te respondo yo.</p>
-    <div class="final-ctas rv-in">
-      <button class="btn" type="button" data-start>Empieza <span class="arr" aria-hidden="true">→</span></button>
-      <a class="link-quiet" href="https://wa.me/34651415049?text=Hola%20Francisco%2C%20vengo%20de%20tu%20web." target="_blank" rel="noopener">Prefiero escribirte directamente</a>
+<!-- ======================= CIERRE ======================= -->
+<section class="final sec-l dark" aria-labelledby="h-final">
+  <div class="container">
+    <h2 id="h-final">La mayoría abandona justo antes de ver resultados.</h2>
+    <p class="lead">Contesta cuatro preguntas (tardas un minuto) y me llega tu caso por WhatsApp. Te respondo yo.</p>
+    <div class="actions">
+      <button class="btn" type="button" data-start>Empieza</button>
+      <a class="link" href="https://wa.me/34651415049?text=Hola%20Francisco%2C%20vengo%20de%20tu%20web." target="_blank" rel="noopener">Prefiero escribirte directamente</a>
     </div>
-    <p class="rv-in" style="margin-top:48px;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mute-d)">No somos perfectos · Estamos aprendiendo · Elegimos volver</p>
+    <p class="motto">No somos perfectos. Estamos aprendiendo. Elegimos volver.</p>
   </div>
 </section>
 
 </main>
 
-<!-- ======================= FOOTER ======================= -->
+<!-- ======================= FOOTER (mast) ======================= -->
 <footer>
-  <div class="wrap">
-    <div class="foot">
+  <div class="container">
+    <span class="mast" aria-hidden="true"><b>FS</b>DIETISTA</span>
+    <div class="grid foot">
       <div>
-        <img class="brand-logo" src="logo.png" alt="Logo FSDIETISTA" width="138" height="46" loading="lazy" onerror="this.outerHTML='<span class=&quot;brand-text&quot; style=&quot;color:#F3EFE6&quot;><b>FS</b>DIETISTA</span>'">
-        <p style="margin:16px 0 0;max-width:32ch">Francisco Sabater · Dietista y entrenador. Nutrición y entrenamiento online y en Catarroja.</p>
+        <p>Francisco Sabater, dietista y entrenador. Nutrición y entrenamiento online y en Catarroja.</p>
       </div>
       <div>
-        <h4>Contacto</h4>
+        <h2>Contacto</h2>
         <ul>
           <li><a href="tel:+34651415049">651 41 50 49</a></li>
           <li><a href="https://wa.me/34651415049" target="_blank" rel="noopener">WhatsApp</a></li>
@@ -954,7 +382,7 @@ body.flow-lock{overflow:hidden}
         </ul>
       </div>
       <div>
-        <h4>Redes</h4>
+        <h2>Redes</h2>
         <ul>
           <li><a href="https://www.instagram.com/fs.nutricion/" target="_blank" rel="noopener">Instagram</a></li>
           <li><a href="[URL FACEBOOK]" target="_blank" rel="noopener">Facebook</a></li>
@@ -962,7 +390,7 @@ body.flow-lock{overflow:hidden}
         </ul>
       </div>
       <div>
-        <h4>Legal</h4>
+        <h2>Legal</h2>
         <ul>
           <li><a href="#">Aviso legal</a></li>
           <li><a href="#">Política de privacidad</a></li>
@@ -971,23 +399,28 @@ body.flow-lock{overflow:hidden}
       </div>
     </div>
     <div class="legal">
-      <span>© <span id="yr">2026</span> FS · Francisco Sabater Fernández</span>
-      <span>Mapa © OpenFreeMap · © OpenStreetMap</span>
+      <span>© <span id="yr">2026</span> FS, Francisco Sabater Fernández</span>
+      <span>Mapa © OpenFreeMap, © OpenStreetMap</span>
     </div>
   </div>
 </footer>
 
-<!-- CTA flotante móvil -->
-<div class="fab" id="fab"><button class="btn" type="button" data-start>Empieza <span class="arr" aria-hidden="true">→</span></button></div>
+<!-- Barra fija con la acción -->
+<div class="fab" id="fab">
+  <div class="container">
+    <p>Cuatro preguntas, un minuto, y me llega tu caso por WhatsApp.</p>
+    <button class="btn" type="button" data-start>Empieza</button>
+  </div>
+</div>
 
 <!-- ======================= FLUJO EMPIEZA ======================= -->
 <div class="flow" id="flow" role="dialog" aria-modal="true" aria-labelledby="flowTitle" aria-hidden="true">
   <div class="flow-bg" data-close></div>
   <div class="flow-panel">
     <div class="flow-top">
-      <span class="brand-text" id="flowTitle"><b>FS</b> · Empieza</span>
+      <span class="brand-text" id="flowTitle"><b>FS</b> Empieza</span>
       <button class="flow-close" type="button" data-close aria-label="Cerrar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
       </button>
     </div>
     <div class="progress" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
@@ -1000,10 +433,10 @@ body.flow-lock{overflow:hidden}
         <h3>¿Qué quieres conseguir?</h3>
         <p class="hint">Elige lo que más te importa ahora mismo.</p>
         <div class="opts">
-          <div class="opt"><input type="radio" name="goal" id="g1" value="perder grasa"><label for="g1"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></span><span>Perder grasa<small>Sin dietas extremas</small></span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="goal" id="g2" value="ganar fuerza y músculo"><label for="g2"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/></svg></span><span>Ganar fuerza o músculo<small>Progresar en el gimnasio</small></span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="goal" id="g3" value="rendir más en mi deporte"><label for="g3"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/></svg></span><span>Rendir en mi deporte<small>Running, HYROX, ciclismo…</small></span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="goal" id="g4" value="mejorar mi salud en general"><label for="g4"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span>Salud general<small>Comer mejor, sentirme mejor</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="goal" id="g1" value="perder grasa"><label for="g1"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4 6 7 6 11a6 6 0 0 1-12 0c0-4 3-7 6-11z"/></svg></span><span>Perder grasa<small>Sin dietas extremas</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="goal" id="g2" value="ganar fuerza y músculo"><label for="g2"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 10v4M6 7v10M18 7v10M21 10v4M6 12h12"/></svg></span><span>Ganar fuerza o músculo<small>Progresar en el gimnasio</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="goal" id="g3" value="rendir más en mi deporte"><label for="g3"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18l5-6 4 3 7-9"/><path d="M15 6h5v5"/></svg></span><span>Rendir en mi deporte<small>Running, HYROX, ciclismo…</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="goal" id="g4" value="mejorar mi salud en general"><label for="g4"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12h4l2-5 4 10 2-5h6"/></svg></span><span>Salud general<small>Comer mejor, sentirme mejor</small></span><span class="chk"></span></label></div>
         </div>
         <div class="subopts" id="sportBox">
           <p>¿Qué deporte?</p>
@@ -1025,9 +458,9 @@ body.flow-lock{overflow:hidden}
         <p class="hint">Sé realista: tu semana normal, no la ideal.</p>
         <div class="opts two">
           <div class="opt"><input type="radio" name="days" id="d0" value="ahora mismo no entreno"><label for="d0"><span>Ahora no entreno</span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="days" id="d1" value="1–2 días a la semana"><label for="d1"><span>1–2 días</span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="days" id="d1" value="1–2 días a la semana"><label for="d1"><span>1 o 2 días</span><span class="chk"></span></label></div>
           <div class="opt"><input type="radio" name="days" id="d2" value="3 días a la semana"><label for="d2"><span>3 días</span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="days" id="d3" value="4–5 días a la semana"><label for="d3"><span>4–5 días</span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="days" id="d3" value="4–5 días a la semana"><label for="d3"><span>4 o 5 días</span><span class="chk"></span></label></div>
           <div class="opt" style="grid-column:1/-1"><input type="radio" name="days" id="d4" value="6 días o más a la semana"><label for="d4"><span>6 o más</span><span class="chk"></span></label></div>
         </div>
       </fieldset>
@@ -1038,9 +471,9 @@ body.flow-lock{overflow:hidden}
         <h3>¿Cómo prefieres trabajar?</h3>
         <p class="hint">Mismo método en las dos.</p>
         <div class="opts">
-          <div class="opt"><input type="radio" name="mode" id="m1" value="online"><label for="m1"><span class="ic"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M11 18h2"/></svg></span><span>Online<small>Desde donde estés</small></span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="mode" id="m2" value="presencial en Catarroja"><label for="m2"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span>Presencial en Catarroja<small>Camí Real 63</small></span><span class="chk"></span></label></div>
-          <div class="opt"><input type="radio" name="mode" id="m3" value="aún no lo tengo claro (online o presencial)"><label for="m3"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg></span><span>Aún no lo sé<small>Lo hablamos</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="mode" id="m1" value="online"><label for="m1"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="2.5" width="12" height="19" rx="2"/><path d="M11 18h2"/></svg></span><span>Online<small>Desde donde estés</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="mode" id="m2" value="presencial en Catarroja"><label for="m2"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></svg></span><span>Presencial en Catarroja<small>Camí Real 63</small></span><span class="chk"></span></label></div>
+          <div class="opt"><input type="radio" name="mode" id="m3" value="aún no lo tengo claro (online o presencial)"><label for="m3"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/></svg></span><span>Aún no lo sé<small>Lo hablamos</small></span><span class="chk"></span></label></div>
         </div>
       </fieldset>
 
@@ -1054,14 +487,14 @@ body.flow-lock{overflow:hidden}
           <input id="fname" name="name" type="text" autocomplete="given-name" maxlength="40" placeholder="Tu nombre">
           <span class="err">Escribe tu nombre para continuar.</span>
         </div>
-        <p style="font-weight:700;font-size:.92rem;margin:4px 0 10px">¿Cuándo prefieres que te conteste?</p>
-        <div class="chips" style="margin-bottom:18px">
+        <p class="flow-q">¿Cuándo prefieres que te conteste?</p>
+        <div class="chips spaced">
           <span class="chip"><input type="radio" name="when" id="w1" value="por la mañana"><label for="w1">Mañana</label></span>
           <span class="chip"><input type="radio" name="when" id="w2" value="por la tarde"><label for="w2">Tarde</label></span>
           <span class="chip"><input type="radio" name="when" id="w3" value="cuando puedas" checked><label for="w3">Cuando puedas</label></span>
         </div>
         <div class="field">
-          <label for="fnote">¿Algo más? <span style="font-weight:500;color:var(--mute-l)">(opcional)</span></label>
+          <label for="fnote">¿Algo más? <span>(opcional)</span></label>
           <textarea id="fnote" name="note" maxlength="280" placeholder="Ej.: trabajo a turnos, tengo una lesión de rodilla, compito en marzo…"></textarea>
         </div>
       </fieldset>
@@ -1079,8 +512,8 @@ body.flow-lock{overflow:hidden}
     </form>
 
     <div class="flow-foot">
-      <button class="btn btn-back" type="button" id="btnBack" aria-label="Paso anterior">←</button>
-      <button class="btn" type="button" id="btnNext" disabled>Siguiente <span class="arr" aria-hidden="true">→</span></button>
+      <button class="btn btn-back" type="button" id="btnBack" aria-label="Atrás, paso anterior">Atrás</button>
+      <button class="btn" type="button" id="btnNext" disabled>Siguiente</button>
     </div>
     <div class="flow-direct"><a href="https://wa.me/34651415049?text=Hola%20Francisco%2C%20vengo%20de%20tu%20web." target="_blank" rel="noopener">Prefiero escribirte directamente</a></div>
   </div>
@@ -1102,19 +535,16 @@ body.flow-lock{overflow:hidden}
   };
   window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
 
-  /* ---------- Reveal + marcador mostaza ---------- */
+  /* ---------- Mitos: se tachan al entrar en pantalla (la única revelación) ---------- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (!e.isIntersecting) return;
-      const el = e.target;
-      el.classList.add(el.matches('[data-hl]') ? 'on' : el.matches('[data-strike]') ? 'on' : 'in');
-      if (el.matches('[data-strike]')) el.classList.add('in');
-      io.unobserve(el);
+      e.target.classList.add('on','in');
+      io.unobserve(e.target);
     });
-  }, {threshold:.25, rootMargin:'0px 0px -6% 0px'});
-  $$('.rv-in, [data-hl], [data-strike]').forEach(el => {
+  }, {threshold:.5, rootMargin:'0px 0px -6% 0px'});
+  $$('[data-strike]').forEach(el => {
     if (reduce) { el.classList.add('in','on'); return; }
-    if (el.matches('[data-hl]')) el.style.transitionDelay = '.35s';
     io.observe(el);
   });
 
@@ -1156,23 +586,14 @@ body.flow-lock{overflow:hidden}
     ["Sara Muñoz Veiga","Hace 3 años","Llevo desde marzo y muy contenta. Yo pensaba que sabía comer, pero estaba muy equivocada. No soy la persona más constante del mundo y aún así he notado muy buenos resultados, así que dentro de un tiempo si sigo así o mejor, no me lo quiero imaginar 😬😬…"],
     ["Juan Antonio Rodriguez","Hace 7 meses","Gran profesional de la salud y gran deportista"]
   ];
-  const G = '<svg width="18" height="18" viewBox="0 0 48 48" aria-label="Google" role="img"><path fill="#FFC107" d="M43.6 20.1H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.6-.4-3.9z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 8 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.1H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.6-.4-3.9z"/></svg>';
   const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const initials = n => n.split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0]).join('').toUpperCase();
-  const card = ([n,d,t]) => `<figure class="rv"><div class="rv-top"><span class="stars" aria-label="5 estrellas">★★★★★</span>${G}</div><blockquote>${esc(t)}</blockquote><figcaption class="rv-who"><span class="av" aria-hidden="true">${esc(initials(n))}</span><span><b>${esc(n)}</b><span>${esc(d)} · Google</span></span></figcaption></figure>`;
+  const card = ([n,d,t]) => `<figure class="rv"><span class="stars" role="img" aria-label="5 estrellas">★★★★★</span><blockquote>${esc(t)}</blockquote><figcaption class="rv-who"><span class="av" aria-hidden="true">${esc(initials(n))}</span><span><b>${esc(n)}</b><span>${esc(d)} · Google</span></span></figcaption></figure>`;
   const fillRow = (id, list) => {
     const g = document.getElementById(id);
     g.innerHTML = list.map(card).join('');
-    const clone = g.cloneNode(true); clone.removeAttribute('id'); clone.setAttribute('aria-hidden','true');
-    g.parentNode.appendChild(clone);
   };
   fillRow('row1', REVIEWS); fillRow('row2', REVIEWS_2);
-  // Pausa al mantener el dedo (táctil)
-  $$('[data-marquee]').forEach(m => {
-    m.addEventListener('touchstart', () => m.classList.add('paused'), {passive:true});
-    m.addEventListener('touchend', () => m.classList.remove('paused'));
-    m.addEventListener('touchcancel', () => m.classList.remove('paused'));
-  });
 
   /* ============================================================
      Flujo "Empieza" → WhatsApp con mensaje precargado
@@ -1235,7 +656,7 @@ body.flow-lock{overflow:hidden}
       btnNext.innerHTML = '<svg class="wa-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .6l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.4 1.8 2.2 1.2 1.1 2.2 1.4 2.5 1.6.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.3.1.2.1.8-.1 1.5z"/></svg> Abrir WhatsApp';
       btnNext.disabled = false;
     } else {
-      btnNext.innerHTML = (n === 4 ? 'Ver resumen' : 'Siguiente') + ' <span class="arr" aria-hidden="true">→</span>';
+      btnNext.textContent = n === 4 ? 'Ver resumen' : 'Siguiente';
       btnNext.disabled = !valid(n);
     }
     const h = st.querySelector('h3'); if (h){ h.setAttribute('tabindex','-1'); h.focus({preventScroll:true}); }
@@ -1317,10 +738,12 @@ body.flow-lock{overflow:hidden}
 
   /* ---------- Mapa 3D · paleta, geometría y utilidades (funciones puras) ---------- */
   // Colores de marca usados en el mapa
+  // Leídos de los tokens (tokens.css) para que el mapa comparta la paleta de la página
+  const tok = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const MAP_C = {
-    mustard:'#EDB03C', cream:'#F3EFE6',
-    bLow:'#E3E5EC', bHigh:'#B9BFD0',           // edificios genéricos según altura
-    water:'#C9D6E3', green:'#DCE5D2', road:'#FFFFFF', roadMain:'#E2DACA'
+    mustard:tok('--map-mustard'), cream:tok('--map-cream'),
+    bLow:tok('--map-b-low'), bHigh:tok('--map-b-high'),           // edificios genéricos según altura
+    water:tok('--map-water'), green:tok('--map-green'), road:tok('--map-road'), roadMain:tok('--map-road-main')
   };
   // Escala de color por altura: 0 m → bLow, 30 m → bHigh (misma escala en la capa y en el halo)
   const BUILDING_COLOR_EXPR = ['interpolate',['linear'],['coalesce',['get','render_height'],0],0,MAP_C.bLow,30,MAP_C.bHigh];
@@ -1519,7 +942,7 @@ body.flow-lock{overflow:hidden}
         el.className = 'fs-marker'; el.type = 'button'; el.setAttribute('aria-label','FS Dietista · ver datos de la consulta');
         el.innerHTML = '<img src="logo.png" alt="" onerror="this.outerHTML=\'<span class=&quot;mono&quot;><b>F</b>S</span>\'">';
         const popup = new maplibregl.Popup({offset:44, closeButton:true, maxWidth:'260px'})
-          .setHTML(`<b>FS · Francisco Sabater</b><p>${ADDR}</p><p>Horario: [HORARIO]</p><p><a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Camí Real 63, 46470 Catarroja, Valencia')}" target="_blank" rel="noopener">Cómo llegar →</a></p>`);
+          .setHTML(`<b>FS · Francisco Sabater</b><p>${ADDR}</p><p><a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent('Camí Real 63, 46470 Catarroja, Valencia')}" target="_blank" rel="noopener">Cómo llegar</a></p>`);
         new maplibregl.Marker({element:el, anchor:'bottom'}).setLngLat([LNG,LAT]).setPopup(popup).addTo(map);
 
         // Órbita, pausas e interacciones (registra el 'moveend' inicial antes del flyTo)
@@ -1538,5 +961,7 @@ body.flow-lock{overflow:hidden}
   $('#yr').textContent = new Date().getFullYear();
 })();
 </script>
+<script>window.hallmarkSlots = (m) => { for (const [k, v] of Object.entries(m)) { const s = document.querySelector(`[data-slot="${k}"]`); if (!s) continue; const im = new Image(); im.src = typeof v === 'string' ? v : v.src; im.alt = (typeof v === 'object' && v.alt) || s.dataset.alt || ''; s.querySelectorAll(':scope > img').forEach((o) => o.remove()); s.prepend(im); } };
+document.querySelectorAll('[data-slot] img').forEach((i) => { if (i.complete && !i.naturalWidth) i.remove(); else i.addEventListener('error', () => i.remove(), { once: true }); });</script>
 </body>
 </html>

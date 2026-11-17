@@ -1,0 +1,26 @@
+:root {
+  --space-3xs: 2px; --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px; --space-lg: 24px; --space-xl: 40px; --space-2xl: 64px; --space-3xl: 96px; --space-4xl: 144px;
+  --text-xs: 0.8125rem; --text-sm: 0.875rem; --text-md: 1rem; --text-lg: 1.25rem; --text-xl: 1.5625rem; --text-2xl: 1.953rem; --text-3xl: 2.441rem;
+  --text-display-s: clamp(2.25rem, 4vw + 0.5rem, 3.75rem); --text-display: clamp(2.75rem, 5vw + 1rem, 5.25rem);
+  --text-section: clamp(2rem, 2.5vw + 1rem, 3.5rem); --text-title: clamp(1.25rem, 0.75vw + 0.875rem, 1.625rem); --text-lead: clamp(1.125rem, 0.35vw + 1rem, 1.375rem);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); --ease-in: cubic-bezier(0.7, 0, 0.84, 0); --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-micro: 120ms; --dur-short: 220ms; --dur-long: 420ms;
+  --color-error: oklch(52% 0.19 27); --color-success: oklch(50% 0.12 150);
+  --container: 1440px; --gutter: 64px; --gap-columns: 32px; --section-gap-s: 120px; --section-gap: 144px; --section-gap-l: 176px;
+  --z-base: 1; --z-raised: 10; --z-dropdown: 100; --z-sticky: 200; --z-sticky-nav: 300; --z-modal: 400; --z-toast: 500; --z-tooltip: 600;
+  /* Brand palette, read from the project's own tokens (index.html before the redesign: ink #11141F, navy #2A3147, mustard #EDB03C, cream #F3EFE6) */
+  --color-paper: oklch(95.3% 0.013 87); --color-paper-2: oklch(92% 0.019 86); --color-paper-3: oklch(88.5% 0.022 86);
+  --color-ink: oklch(19.4% 0.023 272); --color-ink-2: oklch(42.9% 0.026 271); --color-muted: oklch(50% 0.024 271);
+  --color-rule: oklch(84% 0.02 86);
+  --color-accent: oklch(79.5% 0.145 79); --color-accent-2: oklch(84% 0.13 82); --color-accent-ink: oklch(19.4% 0.023 272); --color-focus: oklch(50% 0.12 66);
+  --color-night: oklch(19.4% 0.023 272); --color-night-2: oklch(23% 0.03 272); --color-navy: oklch(31.7% 0.041 270);
+  --color-on-night: oklch(95.3% 0.013 87); --color-on-night-2: oklch(78% 0.022 271); --color-night-rule: oklch(33% 0.035 271);
+  --color-scrim: oklch(19.4% 0.023 272 / 0.82); --color-scrim-0: oklch(19.4% 0.023 272 / 0); --color-backdrop: oklch(12% 0.02 272 / 0.72);
+  --color-wa: oklch(95.5% 0.06 142); --color-wa-ink: oklch(22% 0.02 150); --color-error: oklch(48% 0.19 15);
+  --map-cream: oklch(95.3% 0.013 87); --map-mustard: oklch(79.5% 0.145 79); --map-b-low: oklch(92% 0.008 272); --map-b-high: oklch(81% 0.022 272);
+  --map-water: oklch(86% 0.03 245); --map-green: oklch(90% 0.03 128); --map-road: oklch(99% 0.004 87); --map-road-main: oklch(88% 0.025 86);
+  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif; --font-body: "Schibsted Grotesk", ui-sans-serif, system-ui, sans-serif; --font-outlier: var(--font-body);
+  --display-weight: 900;
+  --radius-card: 6px; --radius-input: 6px; --radius-pill: 999px; --rule-hair: 1px; --shadow-card: none;
+  --tracking-display: 0;
+}

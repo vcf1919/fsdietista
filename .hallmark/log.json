@@ -1,0 +1,37 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "full",
+  "scope": "page",
+  "shape": "Manifesto",
+  "theme": "brand",
+  "axes": "light/display-condensed/warm",
+  "hero": "Stage",
+  "nav": "masthead",
+  "footer": "mast",
+  "imagery": "the owner photos and reel captures",
+  "photos": [],
+  "entry": "none",
+  "fingerprint": "stage/rows/table/steps/offer/split/rail/grid/rows/map",
+  "sections": [
+   "Hero",
+   "Rows",
+   "Table",
+   "Steps",
+   "Offer",
+   "Split",
+   "Rail",
+   "Grid",
+   "Rows",
+   "Map",
+   "Statement",
+   "Footer"
+  ],
+  "signature": "the reel subtitle typed word by word over Paco own frame",
+  "waived": [
+   "77"
+  ],
+  "prompt": "dietista y entrenador para deportistas +25, online y en Catarroja",
+  "date": "2026-11-17"
+ }
+]
