@@ -7,9 +7,7 @@
 /* Hallmark · dropped "[84 días · 12 semanas]", the third plan card, and the Instagram testimonial and photo placeholders · internal notes for Francisco, listed in the handoff */
 /* Hallmark · dismissed 42 · a masthead: the wordmark centred between who he is and the links, not the wordmark-left bar */
 /* Hallmark · answered F7 · the round shapes are the reviewers' initials, the map pin and the progress track, all circles by nature */
-/* Hallmark · waive 77 · a rail of sixteen Google reviews runs past the container edge below the head · the render tier reads the rail as a head with no body, yet the reviews are the body */
 /* Hallmark · dismissed 59 · twelve sections because the owner's content stays whole: myths, method, plans, story, reviews, posts, questions and the consulta each carry their own facts */
-/* Hallmark · reworded "Reseñas copiadas tal cual de Google Maps. El texto largo se recorta." to "Reseñas copiadas tal cual de Google Maps." · the rail now shows every review whole, so the second sentence would be false */
 /* Hallmark · reworded "Nutrición y entrenamiento, con una sola persona, para deportistas +25 que trabajan, tienen poco tiempo y quieren progresar sin vivir en el gimnasio." to "Nutrición y entrenamiento con una sola persona, para deportistas +25 con poco tiempo." · 58 asks one short hero sentence; the rest is the next section's head */
 /* Hallmark · reworded "Sígueme en Instagram · @fs.nutricion" to "Sígueme en Instagram" · 63 names the dot-joined label */
 /* Hallmark · dismissed 58 · copy kept from the owner's page; only the hero sentence and the placeholder lines were cut */
@@ -164,17 +162,30 @@ h3 { font-family: var(--font-body); font-weight: 700; letter-spacing: 0; }
 .score b { font-family: var(--font-display); font-weight: 900; font-size: clamp(5rem, 7vw, 8rem); line-height: 0.9; font-variant-numeric: tabular-nums; }
 .score small { display: block; font-size: var(--text-sm); color: var(--color-ink-2); }
 .stars { color: var(--color-ink); letter-spacing: 0; font-size: var(--text-lg); }
-.reviews-rail { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(18rem, 30rem); overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); padding-inline: max(var(--gutter), calc((100% - var(--container)) / 2 + var(--gutter))); padding-bottom: var(--space-md); overscroll-behavior-x: contain; scrollbar-color: var(--color-muted) var(--color-paper-2); }
-.reviews-rail:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
-.reviews-rail .mq-group { display: contents; }
-.rv { scroll-snap-align: start; align-self: start; min-height: 100%; margin: 0; padding: 0 var(--space-xl); border-left: 1px solid var(--color-paper-3); display: flex; flex-direction: column; gap: var(--space-md); }
-.rv blockquote { margin: 0; font-size: 1.0625rem; line-height: 1.55; }
+.marquees { display: grid; gap: var(--space-md); max-width: 1920px; margin-inline: auto; }
+.marquee { overflow: hidden; padding-block: var(--space-2xs); -webkit-mask-image: linear-gradient(90deg, transparent, var(--color-ink) 6%, var(--color-ink) 94%, transparent); mask-image: linear-gradient(90deg, transparent, var(--color-ink) 6%, var(--color-ink) 94%, transparent); }
+.marquee:focus-visible { outline: 2px solid var(--color-focus); outline-offset: -2px; }
+.mq-track { display: flex; width: max-content; animation: mq var(--dur, 80s) linear infinite; }
+.marquee.rev .mq-track { animation-direction: reverse; }
+.marquee:hover .mq-track, .marquee:focus-within .mq-track, .marquee.paused .mq-track, .marquees.paused .mq-track { animation-play-state: paused; }
+.mq-group { display: flex; gap: var(--space-md); padding-right: var(--space-md); }
+@keyframes mq { to { transform: translateX(-50%); } }
+.rv { flex: 0 0 auto; width: min(340px, 82vw); margin: 0; padding: var(--space-lg); background: var(--color-paper); border: 1px solid var(--color-paper-3); border-radius: var(--radius-card); display: flex; flex-direction: column; gap: var(--space-sm); }
+.rv-top { display: flex; justify-content: space-between; align-items: center; }
+.rv .stars { font-size: var(--text-md); color: var(--color-ink); }
+.rv .g { width: 18px; height: 18px; color: var(--color-ink-2); }
+.rv blockquote { margin: 0; font-size: 0.9375rem; line-height: 1.55; color: var(--color-ink); min-height: 9.3em; }
 .rv-who { display: flex; align-items: center; gap: var(--space-sm); margin-top: auto; font-size: var(--text-sm); }
-.rv-who .av { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius-pill); background: var(--color-ink); color: var(--color-paper); font-weight: 700; font-size: var(--text-xs); }
-.rv-who b { display: block; }
+.rv-who .av { display: grid; place-items: center; width: 40px; height: 40px; flex-shrink: 0; border-radius: var(--radius-pill); background: var(--color-ink); color: var(--color-accent); font-weight: 700; font-size: var(--text-xs); }
+.rv-who b { display: block; line-height: 1.25; }
 .rv-who span span { color: var(--color-muted); }
+.mq-toggle { display: inline-flex; align-items: center; min-height: 44px; padding: 0 var(--space-2xs); border: 0; background: none; color: var(--color-ink); font: 700 var(--text-md)/1 var(--font-body); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.25em; cursor: pointer; transition: text-decoration-color var(--dur-short) var(--ease-out); }
+.mq-toggle:hover { text-decoration-color: var(--color-accent); }
+.mq-toggle:active { transform: translateY(1px); }
+.mq-toggle:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.mq-toggle:disabled { opacity: 0.5; cursor: not-allowed; }
 .rv-more { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-sm) var(--space-lg); margin-top: var(--space-2xl); }
-.rv-more small { font-size: var(--text-sm); color: var(--color-ink-2); }
+.rv-more small { font-size: var(--text-sm); color: var(--color-ink-2); margin-left: auto; }
 
 /* ---------- Instagram: grid ---------- */
 .posts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--gap-columns); }
@@ -389,6 +400,10 @@ body.flow-lock { overflow: clip; }
   .ticks span:nth-child(even) { visibility: hidden; }
 }
 @media (prefers-reduced-motion: reduce) {
+  .mq-track { animation: none; }
+  .marquee { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-mask-image: none; mask-image: none; padding-inline: var(--gutter); }
+  .rv { scroll-snap-align: start; }
+  .mq-group[aria-hidden="true"], .mq-toggle { display: none; }
   .btn, .link, .faq summary::after, .fab, .flow-bg, .flow-panel, .progress span::after, .opt label, .chip label, .opt .chk { transition: none; }
   .js .reel-line .w { opacity: 1; transition: none; }
 }

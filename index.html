@@ -274,14 +274,15 @@
       </div>
     </div>
   </div>
-  <div class="reviews-rail" tabindex="0" role="region" aria-label="Reseñas de Google, desliza para leer más">
-    <div class="mq-group" id="row1"></div>
-    <div class="mq-group" id="row2"></div>
+  <div class="marquees" id="marquees">
+    <div class="marquee" data-marquee role="region" tabindex="0" style="--dur:80s" aria-label="Reseñas de Google, fila 1"><div class="mq-track"><div class="mq-group" id="row1"></div></div></div>
+    <div class="marquee rev" data-marquee role="region" tabindex="0" style="--dur:88s" aria-label="Reseñas de Google, fila 2"><div class="mq-track"><div class="mq-group" id="row2"></div></div></div>
   </div>
   <div class="container">
     <div class="rv-more">
       <a class="btn btn--quiet" href="https://maps.google.com/?cid=15658238626307433319" target="_blank" rel="noopener">Leer todas en Google</a>
-      <small>Reseñas copiadas tal cual de Google Maps.</small>
+      <button class="mq-toggle" type="button" id="mqToggle" aria-pressed="false" aria-controls="marquees">Pausar reseñas</button>
+      <small>Reseñas copiadas tal cual de Google Maps. El texto largo se recorta.</small>
     </div>
   </div>
 </section>
@@ -588,12 +589,33 @@
   ];
   const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const initials = n => n.split(/\s+/).filter(Boolean).slice(0,2).map(w => w[0]).join('').toUpperCase();
-  const card = ([n,d,t]) => `<figure class="rv"><span class="stars" role="img" aria-label="5 estrellas">★★★★★</span><blockquote>${esc(t)}</blockquote><figcaption class="rv-who"><span class="av" aria-hidden="true">${esc(initials(n))}</span><span><b>${esc(n)}</b><span>${esc(d)} · Google</span></span></figcaption></figure>`;
+  // Logo de Google en un solo color (currentColor), como pide la paleta
+  const G = '<svg class="g" viewBox="0 0 24 24" aria-label="Google" role="img"><path fill="currentColor" d="M21.35 11.1H12v2.98h5.38c-.23 1.5-1.66 4.4-5.38 4.4-3.24 0-5.88-2.68-5.88-5.98S8.76 6.52 12 6.52c1.84 0 3.08.79 3.78 1.46l2.58-2.48C16.7 3.96 14.56 3 12 3 7.03 3 3 7.03 3 12s4.03 9 9 9c5.2 0 8.64-3.65 8.64-8.8 0-.59-.06-1.04-.14-1.48z"/></svg>';
+  // Recorte del texto largo (la reseña completa está en Google)
+  const MAX = 230;
+  const cut = t => t.length <= MAX ? t : t.slice(0, t.lastIndexOf(' ', MAX)).replace(/[,.;:]$/, '') + '…';
+  const card = ([n,d,t]) => `<figure class="rv"><div class="rv-top"><span class="stars" role="img" aria-label="5 estrellas">★★★★★</span>${G}</div><blockquote>${esc(cut(t))}</blockquote><figcaption class="rv-who"><span class="av" aria-hidden="true">${esc(initials(n))}</span><span><b>${esc(n)}</b><span>${esc(d)} · Google</span></span></figcaption></figure>`;
   const fillRow = (id, list) => {
     const g = document.getElementById(id);
     g.innerHTML = list.map(card).join('');
+    // Copia para el bucle continuo; oculta a lectores de pantalla
+    const clone = g.cloneNode(true); clone.removeAttribute('id'); clone.setAttribute('aria-hidden','true');
+    clone.querySelectorAll('[role="img"]').forEach(e => e.removeAttribute('role'));
+    g.parentNode.appendChild(clone);
   };
   fillRow('row1', REVIEWS); fillRow('row2', REVIEWS_2);
+  // Pausa: botón visible, y además al mantener el dedo encima (táctil); ratón y foco pausan por CSS
+  const mqWrap = $('#marquees'), mqBtn = $('#mqToggle');
+  mqBtn.addEventListener('click', () => {
+    const p = mqWrap.classList.toggle('paused');
+    mqBtn.setAttribute('aria-pressed', String(p));
+    mqBtn.textContent = p ? 'Reanudar reseñas' : 'Pausar reseñas';
+  });
+  $$('[data-marquee]').forEach(m => {
+    m.addEventListener('touchstart', () => m.classList.add('paused'), {passive:true});
+    m.addEventListener('touchend', () => m.classList.remove('paused'));
+    m.addEventListener('touchcancel', () => m.classList.remove('paused'));
+  });
 
   /* ============================================================
      Flujo "Empieza" → WhatsApp con mensaje precargado
